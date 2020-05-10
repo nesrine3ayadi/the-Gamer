@@ -8,6 +8,7 @@ import HomePage from './Components/HomePage/HomePage';
 function App() {
   return (
     <div className="App">
+      HELLO
        <Route exact path ="/register" component={Register}></Route>
        <Route exact path ="/login" component={Login}></Route>
        <Route exact path = "/home" component={HomePage}></Route>
