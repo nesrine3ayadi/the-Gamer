@@ -10,12 +10,22 @@ function Register(props) {
     email: "",
     password: "",
     confirmPassword: "",
+    imageUser:"",
+    imageCover:"",
+    dataOfBirth:"",
+    aboutUser:"",
+    country:"",
+    activate:true,
+    banned:false,
+    createdAt:Date.now(),
+    role:"user"
+
   });
   const add = (e) => {
     e.preventDefault();
     axios.post("http://localhost:5000/", user);
     props.addUser(user)
-    setUser({
+    setUser({...user,
       username: "",
       email: "",
       password: "",

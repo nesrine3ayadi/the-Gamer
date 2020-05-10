@@ -21,38 +21,42 @@ const UserSchema = new Schema({
     required: true,
   },
   
-  // imageUser : {
-  //   type: String,
-  //   required: false
-  // },
-  // imageCover : {
-  //   type: String,
-  //   required: false
-  // },
-  // dateOfBirth: {
-  //   type: Date,
-  //   required: false
-  // },
-  // aboutUser: {
-  //   type: String,
-  //   required: false
-  // },
-  // country : {
-  //   type: String,
-  //   required: false
-  // },
-  // activate: {
-  //   type: Boolean,
-  //   required: true
-  // },
-  // banned : {
-  //   type: Boolean,
-  //   required: true
-  // },
-  // createdAt: {
-  //   type: Date,
-  //   default: Date.now(),
-  // }
+  imageUser : {
+    type: String,
+    required: false
+  },
+  imageCover : {
+    type: String,
+    required: false
+  },
+  dateOfBirth: {
+    type: Date,
+    required: false
+  },
+  aboutUser: {
+    type: String,
+    required: false
+  },
+  country : {
+    type: String,
+    required: false
+  },
+  activate: {
+    type: Boolean,
+    required: false
+  },
+  banned : {
+    type: Boolean,
+    required: false
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+  role: {
+    type: String,
+    required:false,
+  }
 },
 { collection : 'users' });
 

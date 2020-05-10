@@ -1,5 +1,5 @@
 const initialState = {
-    users: [{email:"mohamed.chebbi@gmail.com",username:"mohamed",password:"password"}]
+    users: []
 }
 export default function (state = initialState, action){
     switch (action.type){

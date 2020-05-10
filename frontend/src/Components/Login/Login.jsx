@@ -4,9 +4,12 @@ import {Link} from "react-router-dom"
 
 import {connect} from "react-redux"
 import {displayUser} from "../../Actions/action"
+import Axios from 'axios'
 
 function Login(props) {
-    useEffect(()=>{},)
+    useEffect(()=>{
+        Axios.get("http://127.0.0.1:5000/").then(resp => props.displayUser(resp.data))
+    },)
     const [user, setUser] = useState({email: "", password: ""})
     const item = props.items.find(e => (e.email === user.email && e.password === user.password))
     const check = (item !== undefined) ? true : false
@@ -60,12 +63,12 @@ function Login(props) {
                                 {
                                 (check) ? (
                                     <Link to="/home">
-                                        {console.log("home ")}
+                                        
                                         <input type="submit" class="btn btn-signin" value="Submit"/></Link>
                                 ) : (
                                     <Link to="/login">
 
-                                        {console.log("login")}
+                                       
                                         <input type="submit" class="btn btn-signin" value="Submit"/></Link>
                                 )
                             } </div>
@@ -81,4 +84,4 @@ function Login(props) {
     )
 }
 const mapStateToProps = state => ({items: state.users})
-export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps,{displayUser})(Login)
