@@ -10,3 +10,10 @@ export const displayUser = (payload)=> {
         payload
     }
 }
+
+export const connectedUser = (payload)=> {
+    return {
+        type: "CONNECTED_USER",
+        payload
+    }
+}
