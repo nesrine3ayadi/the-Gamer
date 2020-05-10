@@ -4,3 +4,9 @@ export const addUser = (payload)=> {
         payload
     }
 }
+export const displayUser = (payload)=> {
+    return {
+        type: "DISPLAY_USER",
+        payload
+    }
+}

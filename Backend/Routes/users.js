@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+
 //User Model
 const User = require("../Models/User");
 
@@ -19,5 +20,8 @@ router.post("/", (req, res) => {
     .then((data) => res.json(data))
     .catch((err) => res.send(err));
 });
+router.get("/",(req,res)=>{
+  User.find().then(users =>res.json(users))
+})
 
 module.exports = router;
