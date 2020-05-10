@@ -9,10 +9,10 @@ export default function (state = initialState, action) {
         users: [...state.users, action.payload],
       };
     case "DISPLAY_USER":
-      return { users: action.payload };
+      return { ...state,users: action.payload };
 
     case "CONNECTED_USER":
-      return { connectedUser: action.payload };
+      return { ...state,connectedUser: action.payload };
     default:
       return state;
   }

@@ -10,7 +10,8 @@ function Register(props) {
     email: "",
     password: "",
     confirmPassword: "",
-    imageUser:"",
+    imageUser:"https://cdn.dribbble.com/users/567082/screenshots/4356358/profile_picture.png",
+   
     imageCover:"",
     dataOfBirth:"",
     aboutUser:"",

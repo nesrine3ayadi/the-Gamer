@@ -79,7 +79,7 @@ function Login(props) {
                      
                       class="btn btn-signin"
                     
-                      onClick={props.connectedUser(item)}
+                      onClick={()=> props.connectedUser(item)}
                     > Submit </button>
                   </Link>
                 ) : (

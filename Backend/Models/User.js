@@ -23,6 +23,7 @@ const UserSchema = new Schema({
   
   imageUser : {
     type: String,
+    default:"https://cdn.dribbble.com/users/567082/screenshots/4356358/profile_picture.png",
     required: false
   },
   imageCover : {
