@@ -70,7 +70,7 @@ function Navbar(props) {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <img alt="Avatar" src={props.connected.imageUser} />
+            <img alt="image" src={props.connected.imageUser} />
            
             {props.connected.username}
           </a>

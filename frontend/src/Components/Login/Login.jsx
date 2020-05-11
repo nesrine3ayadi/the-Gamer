@@ -1,102 +1,85 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Login.scss";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-import { connect } from "react-redux";
-import { displayUser, connectedUser } from "../../Actions/action";
+
 import Axios from "axios";
 
 function Login(props) {
-  useEffect(() => {
-    Axios.get("http://127.0.0.1:5000/").then((resp) =>
-      props.displayUser(resp.data)
-    );
-  });
-  const [user, setUser] = useState({ email: "", password: "" });
-  const item = props.items.find(
-    (e) => e.email === user.email && e.password === user.password
-  );
+  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [Msg, setMsg] = useState("");
 
-  const check = item !== undefined ? true : false;
+  const loginUser = (e) => {
+
+    Axios
+      .post("http://localhost:5000/login", { email,password })
+      .then(res => {
+        localStorage.setItem("token", res.data.token);
+        props.history.push("/home");
+      })
+      .catch(err => {
+        setMsg("** Please verify your login & password !!!");
+        setPassword("");
+      });
+  };
   return (
     <div>
-      <div class="container">
-        <div class="form">
-          <div class="sign-in-section">
+      <div className="container">
+        <div className="form">
+          <div className="sign-in-section">
             <h1>Sign In</h1>
             <ul>
               <li>
-                <i class="fab fa-facebook-f"></i>
+                <i className="fab fa-facebook-f"></i>
               </li>
               <li>
-                <i class="fab fa-linkedin-in"></i>
+                <i className="fab fa-linkedin-in"></i>
               </li>
               <li>
-                <i class="fab fa-twitter"></i>
+                <i className="fab fa-twitter"></i>
               </li>
             </ul>
             <p>or use your email</p>
-            <form>
-              <div class="form-field">
+         
+              <div className="form-field">
                 <label for="email">Email</label>
                 <input
                   id="email"
                   type="email"
                   placeholder="Email"
                   onChange={(e) =>
-                    setUser({
-                      ...user,
-                      email: e.target.value,
-                    })
+                    setEmail(e.target.value)
                   }
                 />
               </div>
-              <div class="form-field">
+              <div className="form-field">
                 <label for="password">Password</label>
                 <input
                   id="password"
                   type="password"
                   placeholder="Password"
                   onChange={(e) =>
-                    setUser({
-                      ...user,
-                      password: e.target.value,
-                    })
+                    setPassword(e.target.value)
                   }
                 />
               </div>
-              <div class="form-options">
-                <div class="checkbox-field">
-                  <input id="rememberMe" type="checkbox" class="checkbox" />
+              <div className="form-options">
+                <div className="checkbox-field">
+                  <input id="rememberMe" type="checkbox" className="checkbox" />
                   <label for="rememberMe">Remember Me</label>
                 </div>
                 <a href="#">Forgot Password?</a>
               </div>
-              <div class="form-field">
-                {check ? (
-                  <Link to="/home">
-                    <button
-                     
-                      class="btn btn-signin"
-                    
-                      onClick={()=> props.connectedUser(item)}
-                    > Submit </button>
-                  </Link>
-                ) : (
-                  <Link to="/login">
-                    <button
-                     
-                      class="btn btn-signin"
-                      
-                    >
-                        Submit </button>
-                  </Link>
-                )}
+              <div >
+                      <button className = "btn btn-signin" onClick={()=>loginUser()}>submit</button> 
               </div>
-            </form>
-            <div class="links">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms & Conditions</a>
+           
+            <div className="links">
+              {/* <a href="#">Privacy Policy</a>
+              <a href="#">Terms & Conditions</a> */}
+              {Msg}
             </div>
           </div>
         </div>
@@ -104,5 +87,5 @@ function Login(props) {
     </div>
   );
 }
-const mapStateToProps = (state) => ({ items: state.users });
-export default connect(mapStateToProps, { displayUser, connectedUser })(Login);
+
+export default withRouter(Login);
