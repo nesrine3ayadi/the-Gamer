@@ -37,7 +37,7 @@ function Register(props) {
     <div>
       <div class="container">
         <div class="form">
-          <div class="sign-in-section">
+          <div class="sign-in-section" style={{paddingTop: 100}}>
             <h1>Sign Up</h1>
             <ul>
               <li>

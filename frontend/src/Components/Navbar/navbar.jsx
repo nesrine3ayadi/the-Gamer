@@ -6,7 +6,7 @@ import "./navbar.scss";
 
 function Navbar(props) {
   return (
-    <nav class="navbar navbar-expand navbar-light bg-white static-top osahan-nav sticky-top">
+    <nav class="navbar navbar-expand navbar-light  static-top osahan-nav sticky-top">
       &nbsp;&nbsp;
       <button
         class="btn btn-link btn-sm text-secondary order-1 order-sm-0"
@@ -16,7 +16,7 @@ function Navbar(props) {
       </button>
       &nbsp;&nbsp;
       <a class="navbar-brand mr-1" href="index.html">
-        <img class="img-fluid" alt="" src={logo} />
+        <img class="img-fluid logo" width="130" alt="" src={logo} />
       </a>
       {/* <!-- Navbar Search --> */}
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 my-2 my-md-0 osahan-navbar-search">

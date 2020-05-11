@@ -25,7 +25,7 @@ html {
     min-height: 100%;
 }
 body {
-    background-color: #fafafa;
+      background-image: url('./img/bodybg.png') !important;
     color: #888;
     font-size: 13px;
     height: 100%;
@@ -115,7 +115,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
    box-shadow: 0 0 21px #ccc;
 }
 .intro-page p a {
-   color: #000 !important;
+   color: #000;
    font-weight: bold;
    text-transform: uppercase;
 }
@@ -394,7 +394,7 @@ body.sidebar-toggled footer.sticky-footer {
    z-index: 99;
 }
 .osahan-nav {
-    box-shadow: 0 0 10px #f2f2f2;
+    /* box-shadow: 0 0 10px #f2f2f2; */
     padding: 0;
 }
 .osahan-navbar-search .form-control {
@@ -495,6 +495,10 @@ body.sidebar-toggled footer.sticky-footer {
 .sidebar.toggled .channel-sidebar-list li .badge {
     display: none;
 }
+.section_tittle {
+    margin-bottom: 80px;
+  }
+  
 /* Customize Bootstrap */
 .border-none{
     border: none;
