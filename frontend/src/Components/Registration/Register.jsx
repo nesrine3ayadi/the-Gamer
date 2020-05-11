@@ -32,7 +32,7 @@ function Register(props) {
                 props.addUser(user)
             };
         }).catch(err => {
-            setExist("user already exist !")
+            setExist("user already exist , try another email  !")
             setUser({
                 ...user,
                 password: "",
