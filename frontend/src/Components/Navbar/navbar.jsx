@@ -6,15 +6,8 @@ import "./navbar.scss";
 
 function Navbar(props) {
   return (
-    <nav class="navbar navbar-expand navbar-light  static-top osahan-nav sticky-top">
-      &nbsp;&nbsp;
-      <button
-        class="btn btn-link btn-sm text-secondary order-1 order-sm-0"
-        id="sidebarToggle"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-      &nbsp;&nbsp;
+    <nav class="navbar navbar-expand navbar-light  static-top osahan-nav ">
+     
       <a class="navbar-brand mr-1" href="index.html">
         <img class="img-fluid logo" width="130" alt="" src={logo} />
       </a>
@@ -32,9 +25,9 @@ function Navbar(props) {
       {/* <!-- Navbar --> */}
       <ul class="navbar-nav ml-auto ml-md-0 osahan-right-navbar">
         <li class="nav-item mx-1">
-          <a class="nav-link" href="upload.html">
+          <a class="btn_1" href="upload.html">
             <i class="fas fa-plus-circle fa-fw"></i>
-            Upload Video
+           Start your stream
           </a>
         </li>
         <li class="nav-item dropdown no-arrow mx-1">
@@ -66,35 +59,7 @@ function Navbar(props) {
             </a>
           </div>
         </li>
-        <li class="nav-item dropdown no-arrow mx-1">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="messagesDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <i class="fas fa-envelope fa-fw"></i>
-            <span class="badge badge-success">7</span>
-          </a>
-          <div
-            class="dropdown-menu dropdown-menu-right"
-            aria-labelledby="messagesDropdown"
-          >
-            <a class="dropdown-item" href="#">
-              <i class="fas fa-fw fa-edit "></i> &nbsp; Action
-            </a>
-            <a class="dropdown-item" href="#">
-              <i class="fas fa-fw fa-headphones-alt "></i> &nbsp; Another action
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="fas fa-fw fa-star "></i> &nbsp; Something else here
-            </a>
-          </div>
-        </li>
+       
         <li class="nav-item dropdown no-arrow osahan-right-navbar-user">
           <a
             class="nav-link dropdown-toggle user-dropdown-link"
