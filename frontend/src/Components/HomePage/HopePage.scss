@@ -58,7 +58,10 @@ ul {
     line-height: 70px;
     color: #fff;
   }
-  
+  .banner_part .row.align-items-center.justify-content-between{
+    position: relative;
+    z-index: 0;
+  }
   @media (max-width: 576px) {
     /* line 22, ../../01 cl html template/03_jun 2019/186_Gaiming_html/sass/_banner.scss */
     .banner_part .banner_text h1 {
