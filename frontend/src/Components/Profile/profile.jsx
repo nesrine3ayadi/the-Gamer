@@ -23,10 +23,7 @@ const Profile =(props)=> {
      
   },[])
     
-
   return (
-
-   
     <div className="single-channel-page" id="content-wrapper">
       <Navbar />
       <div className="single-channel-image">
@@ -36,9 +33,7 @@ const Profile =(props)=> {
        
         </div>
       </div>
-      <div classNameName="row"> 
-
-      
+      <div classNameName="row">      
       <FormControl classNameName="col-md-8">
         <InputLabel htmlFor="usename">Username</InputLabel>
         <Input id="username" aria-describedby="my-helper-text"  value ={props.currentUser.username}/>
