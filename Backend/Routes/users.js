@@ -84,7 +84,7 @@ router.post("/login", (req, res) => {
         .compare(password, user.password)
         .then(isMatched => {
           if (isMatched) {
-            const payload = { id: user._id, email: user.email };
+            const payload = { id: user._id, email: user.email,imageUser:user.imageUser,username:user.username };
             jwt.sign(payload, "session", { expiresIn: 3600 }, (err, token) => {
               if (err) res.sendStatus(500);
               else res.json({ token: "Bearer " + token });
