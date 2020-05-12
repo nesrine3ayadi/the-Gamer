@@ -35,3 +35,15 @@ img.logo{
 .navbar{
     z-index: 9;
 }
+button#dropdown-basic img {
+    border-radius: 50px;
+    padding-right: 10px;
+}
+button#dropdown-basic {
+    margin-top: 6px;
+    background: inherit;
+}
+
+button#dropdown-basic:focus {
+    box-shadow: none !important;
+}
