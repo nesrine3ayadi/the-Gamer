@@ -4,21 +4,26 @@ import ChannelCard from "../ChannelCard/ChannelCard";
 import "./HopePage.scss";
 import Sidebar from "../Sidebar/sidebar";
 import { connect } from "react-redux";
+import Axios from "axios"
+import {displayUser} from "../../Actions/action"
 
 function HomePage(props) {
-  useEffect(() => {
-    const script = document.createElement("script");
+  // useEffect(() => {
+  //   const script = document.createElement("script");
+   
+  //   script.src =
+  //     "C:/Users/panda/Desktop/VIDOE-Video-Streaming-Template/js/custom.js";
+  //   script.async = true;
 
-    script.src =
-      "C:/Users/panda/Desktop/VIDOE-Video-Streaming-Template/js/custom.js";
-    script.async = true;
+  //   document.body.appendChild(script);
 
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
+  useEffect(()=>{
+    Axios.get("http://localhost:5000/").then(resp => props.displayUser(resp.data))
+  },)
   return (
     <Fragment>
       <Navbar />
@@ -46,7 +51,7 @@ function HomePage(props) {
         </div>
       </section>
       {/* Channels Categories */}
-      {console.log('users :'+ props.users)}
+      
       {/* <!-- pricing part start--> */}
       <section className="pricing_part padding_top">
         <div className="">
@@ -71,7 +76,7 @@ function HomePage(props) {
     </Fragment>
   );
 }
-const mapStatetoProps = (state) => ({
+const mapStatetoProps = state => ({
   users: state.users,
 });
-export default connect(mapStatetoProps)(HomePage);
+export default connect(mapStatetoProps,{displayUser})(HomePage);
