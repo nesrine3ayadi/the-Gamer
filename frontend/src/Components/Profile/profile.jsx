@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import channelbanner from "../../img/channel-banner.png";
 import s2 from "../../img/s2.png";
 import Axios from 'axios'
@@ -11,11 +11,12 @@ import {
 
 const Profile =(props)=> {
  
-  const [currentUser, setCurrentUser] = useState()
+  const [currentUser, setCurrentUser] = useState({})
+  const isFirstRun = useRef(true);
   useEffect(()=>{
-    Axios.get(`http://localhost:5000/profile/${props.match.params.idUser}`).then(resp => setCurrentUser( JSON.stringify(resp.data)))
-    console.log("work" + currentUser)
-  },[currentUser])
+    Axios.get(`http://localhost:5000/profile/${props.match.params.idUser}`).then(resp=>setCurrentUser(JSON.stringify(resp.data)))
+    console.log(currentUser)
+  },)
     
 
   return (
