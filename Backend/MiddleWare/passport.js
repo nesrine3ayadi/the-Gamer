@@ -17,7 +17,7 @@ opts.secretOrKey    = "session" //make session
 
 module.exports = passport =>{ 
     passport.use(new JwStrategy(opts,(jwt_payload,done)=> {
-        User.findById(jwt_payload.id)
+        User.findById(jwt_payload.id) //output 
             .then(user => {
                 if(user) {
                     return done(null, user)
