@@ -21,7 +21,7 @@ function App(props) {
        <Route exact path ="/register" component={Register}></Route>
        <Route exact path ="/login" component={Login}></Route>
        <Route exact path = "/home" component={HomePage}></Route>
-       <Route exact path = "/profile" component={Profile}></Route>
+       <Route exact path = "/profile/:idUser" component={Profile}></Route>
     </div>
   );
 }

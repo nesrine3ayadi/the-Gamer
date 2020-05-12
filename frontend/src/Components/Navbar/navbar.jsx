@@ -4,16 +4,20 @@ import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
 import {Dropdown} from 'react-bootstrap'
 import "./navbar.scss";
+import {Link} from 'react-router-dom'
 
 function Navbar(props) {
   const [username, setUserName] = useState("");
   const [imageUser, setUserImage] = useState("");
+  const [idUser, setIdUser] = useState("");
+
   useEffect(() => {
     var token = localStorage.getItem("token");
     if (token !== null) {
       var decoded = jwt_decode(token);
       setUserName(decoded.username);
       setUserImage(decoded.imageUser);
+      setIdUser(decoded.id)
     }
   }, []);
   return (
@@ -55,7 +59,11 @@ function Navbar(props) {
                 {username}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+              <Dropdown.Item >
+                <Link to={`/profile/${idUser}`}>
+                   Profile              
+                 </Link>
+                </Dropdown.Item>
                 <Dropdown.Item href="#/action-2">Notifications</Dropdown.Item>
                 <Dropdown.Item href="/home" onClick={() => localStorage.removeItem("token")}>Logout</Dropdown.Item>
               </Dropdown.Menu>

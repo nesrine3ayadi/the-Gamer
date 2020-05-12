@@ -115,7 +115,7 @@ router.get(
 );
 
 // @route put /
-//@desc Add user description
+// @desc Add user description
 // @access Public
 
 router.put("/:_id", (req, res) => {
@@ -151,5 +151,16 @@ router.put("/:_id", (req, res) => {
     
   
 });
+
+
+// @rout get /:_id
+// @desc Search one
+// @access Public
+
+router.get("/:_id", (req, res) => {
+  const{ _id} = req.params
+  User.findOne({ _id }).then((users) => res.json(users)).catch(err=> console.log(err))
+});
+
 
 module.exports = router;
