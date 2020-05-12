@@ -1,7 +1,5 @@
 import React, {useState} from "react";
-import {connect} from "react-redux";
 import "./Register.scss";
-import {addUser} from "../../Actions/action";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 
@@ -29,7 +27,7 @@ function Register(props) {
             console.log("the status is:", response.status);
             if (response.status === 200) {
                 props.history.push("/login");
-                props.addUser(user)
+               
             };
         }).catch(err => {
             setExist("user already exist , try another email  !")
@@ -140,4 +138,4 @@ function Register(props) {
     );
 }
 
-export default withRouter(connect(null, {addUser})(Register));
+export default withRouter(Register);
