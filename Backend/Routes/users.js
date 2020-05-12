@@ -88,8 +88,8 @@ router.post("/login", (req, res) => {
               imageCover: user.imageCover,
               dataOfBirth: user.dataOfBirth,
               aboutUser: user.aboutUser,
-              country: user.country, 
-              createdAt: user.createdAt            
+              country: user.country,
+              createdAt: user.createdAt,
             };
             jwt.sign(payload, "session", { expiresIn: 3600 }, (err, token) => {
               if (err) res.sendStatus(500);
@@ -113,5 +113,43 @@ router.get(
     res.json(req.user);
   }
 );
+
+// @route put /
+//@desc Add user description
+// @access Public
+
+router.put("/:_id", (req, res) => {
+  const { _id } = req.params;
+  const {
+    username,
+    email,
+    password,
+    confirmPassword,
+    imageUser,
+    imageCover,
+    dataOfBirth,
+    aboutUser,
+    country,
+  } = req.body;
+  User.findOneAndUpdate(
+    { _id },
+    {
+      $set: {
+        username,
+        email,
+        password,
+        confirmPassword,
+        imageUser,
+        imageCover,
+        dataOfBirth,
+        aboutUser,
+        country,
+      },
+    }
+  ).then(user=>res.json(user))
+  .catch(err=> console.log(err))
+    
+  
+});
 
 module.exports = router;

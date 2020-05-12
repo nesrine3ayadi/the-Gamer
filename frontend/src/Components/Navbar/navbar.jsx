@@ -55,13 +55,13 @@ function Navbar(props) {
                 {username}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Notifications</Dropdown.Item>
+                <Dropdown.Item href="/home" onClick={() => localStorage.removeItem("token")}>Logout</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           ) : (
-            <a className="btn_1" href="#">
+            <a className="btn_1" href="/login">
               Sign In
             </a>
           )}

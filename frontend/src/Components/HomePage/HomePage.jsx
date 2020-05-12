@@ -4,26 +4,11 @@ import ChannelCard from "../ChannelCard/ChannelCard";
 import "./HopePage.scss";
 import Sidebar from "../Sidebar/sidebar";
 import { connect } from "react-redux";
-import Axios from "axios"
-import {displayUser} from "../../Actions/action"
+
 
 function HomePage(props) {
-  // useEffect(() => {
-  //   const script = document.createElement("script");
-   
-  //   script.src =
-  //     "C:/Users/panda/Desktop/VIDOE-Video-Streaming-Template/js/custom.js";
-  //   script.async = true;
 
-  //   document.body.appendChild(script);
-
-  //   return () => {
-  //     document.body.removeChild(script);
-  //   };
-  // }, []);
-  useEffect(()=>{
-    Axios.get("http://localhost:5000/").then(resp => props.displayUser(resp.data))
-  },)
+ 
   return (
     <Fragment>
       <Navbar />
@@ -79,4 +64,4 @@ function HomePage(props) {
 const mapStatetoProps = state => ({
   users: state.users,
 });
-export default connect(mapStatetoProps,{displayUser})(HomePage);
+export default connect(mapStatetoProps)(HomePage);
