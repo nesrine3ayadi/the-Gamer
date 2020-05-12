@@ -45,27 +45,27 @@ function Register(props) {
     };
     return (
         <div>
-            <div class="container">
-                <div class="form">
-                    <div class="sign-in-section"
+            <div className="container">
+                <div className="form">
+                    <div className="sign-in-section"
                         style={
                             {paddingTop: 100}
                     }>
                         <h1>Sign Up</h1>
                         <ul>
                             <li>
-                                <i class="fab fa-facebook-f"></i>
+                                <i className="fab fa-facebook-f"></i>
                             </li>
                             <li>
-                                <i class="fab fa-linkedin-in"></i>
+                                <i className="fab fa-linkedin-in"></i>
                             </li>
                             <li>
-                                <i class="fab fa-twitter"></i>
+                                <i className="fab fa-twitter"></i>
                             </li>
                         </ul>
                         <p>or use your email</p>
                         <form>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label for="username">Username</label>
                                 <input id="email" type="text" placeholder="Username"
                                     value={
@@ -78,7 +78,7 @@ function Register(props) {
                                         })
                                     }/>
                             </div>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label for="email">Email</label>
                                 <input id="email" type="email" placeholder="Email"
                                     value={
@@ -91,7 +91,7 @@ function Register(props) {
                                         })
                                     }/>
                             </div>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label for="password">Password</label>
                                 <input id="password" type="password" placeholder="Password"
                                     value={
@@ -104,7 +104,7 @@ function Register(props) {
                                         })
                                     }/>
                             </div>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label for="password">Confirm Password</label>
                                 <input id="password" type="password" placeholder="confirm Password"
                                     value={
@@ -117,19 +117,19 @@ function Register(props) {
                                         })
                                     }/>
                             </div>
-                            <div class="form-options">
-                                <div class="checkbox-field">
-                                    <input id="rememberMe" type="checkbox" class="checkbox"/>
+                            <div className="form-options">
+                                <div className="checkbox-field">
+                                    <input id="rememberMe" type="checkbox" className="checkbox"/>
                                     <label for="rememberMe">Remember Me</label>
                                 </div>
                                 <a href="#">Forgot Password?</a>
                             </div>
-                            <div class="form-field">
-                                <input type="submit" class="btn btn-signin" value="Submit"
+                            <div className="form-field">
+                                <input type="submit" className="btn btn-signin" value="Submit"
                                     onClick={add}/>
                             </div>
                         </form>
-                        <div class="links">
+                        <div className="links">
                             {/* <a href="#">Privacy Policy</a>
                             <a href="#">Terms & Conditions</a> */}
                             {exist} </div>

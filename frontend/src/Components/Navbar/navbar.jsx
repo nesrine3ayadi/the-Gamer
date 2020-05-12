@@ -13,7 +13,7 @@ function Navbar(props) {
     if (token!==null){var decoded = jwt_decode(token);
     setUserName(decoded.username);
     setUserImage(decoded.imageUser)
-    console.log(decoded)}
+   }
   }, []);
   return (
     <nav className="navbar navbar-expand navbar-light  static-top osahan-nav ">

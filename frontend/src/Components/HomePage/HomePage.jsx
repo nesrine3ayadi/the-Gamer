@@ -1,29 +1,30 @@
 import React, { Fragment, useEffect } from "react";
 import Navbar from "../Navbar/navbar";
-
-import './HopePage.scss'
+import ChannelCard from "../ChannelCard/ChannelCard";
+import "./HopePage.scss";
 import Sidebar from "../Sidebar/sidebar";
+import { connect } from "react-redux";
 
-function HomePage() {
-    useEffect(() => {
-        const script = document.createElement('script');
-      
-        script.src = "C:/Users/panda/Desktop/VIDOE-Video-Streaming-Template/js/custom.js";
-        script.async = true;
-      
-        document.body.appendChild(script);
-      
-        return () => {
-          document.body.removeChild(script);
-        }
-      }, []);
+function HomePage(props) {
+  useEffect(() => {
+    const script = document.createElement("script");
+
+    script.src =
+      "C:/Users/panda/Desktop/VIDOE-Video-Streaming-Template/js/custom.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
   return (
     <Fragment>
       <Navbar />
       <Sidebar />
       {/* <!-- banner part start--> */}
       <section className="banner_part">
-
         <div className="container">
           <div className="row align-items-center justify-content-between">
             <div className="col-lg-6 col-md-8">
@@ -45,61 +46,32 @@ function HomePage() {
         </div>
       </section>
       {/* Channels Categories */}
-     
+      {console.log('users :'+ props.users)}
       {/* <!-- pricing part start--> */}
-        <section className="pricing_part padding_top">
-            <div className="">
-                <div className="row justify-content-center">
-                    <div className="col-lg-6">
-                        <div className="section_tittle text-center">
-                            <h2>Best Channels</h2>
-                        </div>
-                    </div>
-                </div>
-                <div className="row justify-content-center">
-                    <div className="col-lg-3 col-sm-6">
-                        <div className="single_pricing_part">
-                            <p>Silver Package</p>
-                            <h3>$50.00</h3>
-                            <ul>
-                                <li>2GB Bandwidth</li>
-                                <li>Two Account</li>
-                                <li>15GB Storage</li>
-                            </ul>
-                            <a href="#" className="btn_2">Donate</a>
-                        </div>
-                    </div>
-                    <div className="col-lg-3 col-sm-6">
-                        <div className="single_pricing_part">
-                            <p>Silver Package</p>
-                            <h3>$60.00</h3>
-                            <ul>
-                                <li>2GB Bandwidth</li>
-                                <li>Two Account</li>
-                                <li>15GB Storage</li>
-                            </ul>
-                            <a href="#" className="btn_2">Donate</a>
-                        </div>
-                    </div>
-                    <div className="col-lg-3 col-sm-6">
-                        <div className="single_pricing_part">
-                            <p>Silver Package</p>
-                            <h3>$80.00</h3>
-                            <ul>
-                                <li>2GB Bandwidth</li>
-                                <li>Two Account</li>
-                                <li>15GB Storage</li>
-                            </ul>
-                            <a href="#" className="btn_2">Donate</a>
-                        </div>
-                    </div>
-                </div>
+      <section className="pricing_part padding_top">
+        <div className="">
+          <div className="row justify-content-center">
+            <div className="col-lg-6">
+              <div className="section_tittle text-center">
+                <h2>Best Channels</h2>
+              </div>
             </div>
-        </section>
-        {/* <!-- pricing part end--> */}
-    
+          </div>
+          <div className="row justify-content-center">
+            {props.users.map((user) => (
+              <div className="col-lg-3 col-sm-6">
+                <ChannelCard user={user} />
+               
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* <!-- pricing part end--> */}
     </Fragment>
   );
 }
-
-export default HomePage;
+const mapStatetoProps = (state) => ({
+  users: state.users,
+});
+export default connect(mapStatetoProps)(HomePage);

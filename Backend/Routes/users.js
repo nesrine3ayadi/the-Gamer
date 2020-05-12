@@ -4,26 +4,21 @@ const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
-
-
 //User Model
 const User = require("../Models/User");
-
-
-
 
 router.get("/", (req, res) => {
   User.find().then((users) => res.json(users));
 });
 
-
-//test if user already exist ! 
+//test if user already exist !
 // @route  POST api/users
 // @desc   Create A User with beta Crypt
 // @access Public
 
 router.post("/", (req, res) => {
-  const {  username,
+  const {
+    username,
     email,
     password,
     confirmPassword,
@@ -35,10 +30,11 @@ router.post("/", (req, res) => {
     activate,
     banned,
     createdAt,
-    role} = req.body;
+    role,
+  } = req.body;
 
   // Test if user exist Already
-  User.findOne({ email }).then(user => {
+  User.findOne({ email }).then((user) => {
     if (user) return res.sendStatus(409);
     else {
       const newUser = new User({
@@ -63,8 +59,8 @@ router.post("/", (req, res) => {
           newUser.password = hash;
           newUser
             .save()
-            .then(newuser => res.json(newuser))
-            .catch(err => res.send(err));
+            .then((newuser) => res.json(newuser))
+            .catch((err) => res.send(err));
         });
       });
     }
@@ -77,21 +73,31 @@ router.post("/", (req, res) => {
 
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
-  User.findOne({ email }).then(user => {
+  User.findOne({ email }).then((user) => {
     if (!user) res.sendStatus(409);
     else {
       bcrypt
         .compare(password, user.password)
-        .then(isMatched => {
+        .then((isMatched) => {
           if (isMatched) {
-            const payload = { id: user._id, email: user.email,imageUser:user.imageUser,username:user.username };
+            const payload = {
+              id: user._id,
+              username: user.username,
+              email: user.email,
+              imageUser: user.imageUser,
+              imageCover: user.imageCover,
+              dataOfBirth: user.dataOfBirth,
+              aboutUser: user.aboutUser,
+              country: user.country, 
+              createdAt: user.createdAt            
+            };
             jwt.sign(payload, "session", { expiresIn: 3600 }, (err, token) => {
               if (err) res.sendStatus(500);
               else res.json({ token: "Bearer " + token });
             });
           } else res.send(400);
         })
-        .catch(err => res.send("server error"));
+        .catch((err) => res.send("server error"));
     }
   });
 });
