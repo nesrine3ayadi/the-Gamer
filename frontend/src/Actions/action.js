@@ -6,3 +6,9 @@ export const displayUser = (payload)=> {
     }
 }
 
+export const displayCurrentUser = (payload)=> {
+    return {
+        type: "DISPLAY_CURRENT_USER",
+        payload
+    }
+}

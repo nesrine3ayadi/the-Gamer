@@ -1,7 +1,9 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect} from "react";
 import channelbanner from "../../img/channel-banner.png";
 import s2 from "../../img/s2.png";
 import Axios from 'axios'
+import {connect} from "react-redux"
+import {displayCurrentUser} from "../../Actions/action"
 import {
   FormControl,
   Input,
@@ -11,12 +13,12 @@ import {
 
 const Profile =(props)=> {
  
-  const [currentUser, setCurrentUser] = useState({})
-  const isFirstRun = useRef(true);
+
+  
   useEffect(()=>{
-    Axios.get(`http://localhost:5000/profile/${props.match.params.idUser}`).then(resp=>setCurrentUser(JSON.stringify(resp.data)))
-    console.log(currentUser)
-  },)
+    Axios.get(`http://localhost:5000/profile/${props.match.params.idUser}`).then(resp=>props.displayCurrentUser(resp.data))
+     
+  },[])
     
 
   return (
@@ -41,7 +43,7 @@ const Profile =(props)=> {
       </div>
       <FormControl>
         <InputLabel htmlFor="usename">Username</InputLabel>
-        <Input id="username" aria-describedby="my-helper-text"  value={(currentUser) ? currentUser.username : ""} />
+        <Input id="username" aria-describedby="my-helper-text"  value ={props.currentUser.username}/>
         <FormHelperText id="my-helper-text">
           We'll never share your email.
         </FormHelperText>
@@ -63,5 +65,7 @@ const Profile =(props)=> {
     </div>
   );
 }
-
-export default Profile;
+const mapStateToPops = state =>({
+   currentUser: state.currentUser
+})
+export default connect(mapStateToPops,{displayCurrentUser}) (Profile);
