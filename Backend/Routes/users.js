@@ -157,9 +157,9 @@ router.put("/:_id", (req, res) => {
 // @desc Search one
 // @access Public
 
-router.get("/:_id", (req, res) => {
+router.get("/profile/:_id", (req, res) => {
   const{ _id} = req.params
-  User.findOne({ _id }).then((users) => res.json(users)).catch(err=> console.log(err))
+  User.findOne({ _id }).then(users => res.json(users)).catch(err=> console.log(err))
 });
 
 

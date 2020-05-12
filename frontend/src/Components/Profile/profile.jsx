@@ -9,13 +9,13 @@ import {
   FormHelperText,
 } from "@material-ui/core";
 
-function Profile(props) {
+const Profile =(props)=> {
  
   const [currentUser, setCurrentUser] = useState()
   useEffect(()=>{
-    Axios.get(`http://localhost:5000/${props.match.params.idUser}`).then(resp => setCurrentUser(resp.data))
-    
-  },)
+    Axios.get(`http://localhost:5000/profile/${props.match.params.idUser}`).then(resp => setCurrentUser( JSON.stringify(resp.data)))
+    console.log("work" + currentUser)
+  },[currentUser])
     
 
   return (
@@ -40,7 +40,7 @@ function Profile(props) {
       </div>
       <FormControl>
         <InputLabel htmlFor="usename">Username</InputLabel>
-        <Input id="username" aria-describedby="my-helper-text" value={currentUser.username} />
+        <Input id="username" aria-describedby="my-helper-text"  value={(currentUser) ? currentUser.username : ""} />
         <FormHelperText id="my-helper-text">
           We'll never share your email.
         </FormHelperText>
