@@ -1,0 +1,18 @@
+.MuiInputBase-root input{
+    color: #cccccc;
+    text-transform: capitalize;
+    font-family: Cinzel, serif;
+}
+p#my-helper-text {
+    color: #cccccc !important;
+}
+.MuiFormControl-root.col-md-8 {
+    margin: 10px 0;
+}
+.MuiInput-underline:after{
+    border-bottom: 2px solid #a81d1d !important;
+}
+.MuiFormLabel-root.Mui-focused{
+    color:  #cccccc !important;
+    font-size: 14px !important;
+}

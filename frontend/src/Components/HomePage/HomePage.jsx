@@ -11,7 +11,7 @@ function HomePage(props) {
  
   return (
     <Fragment>
-      <Navbar />
+       <Navbar />
       <Sidebar />
       {/* <!-- banner part start--> */}
       <section className="banner_part">

@@ -17,7 +17,7 @@ function App(props) {
   },)
   return (
     <div className="App">
-     
+    
        <Route exact path ="/register" component={Register}></Route>
        <Route exact path ="/login" component={Login}></Route>
        <Route exact path = "/home" component={HomePage}></Route>
