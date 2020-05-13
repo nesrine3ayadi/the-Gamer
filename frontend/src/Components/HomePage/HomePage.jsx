@@ -16,7 +16,7 @@ function HomePage(props) {
     } 
      getGamers()
  
-   })
+   },[props.users])
  
   return (
     <Fragment>

@@ -17,8 +17,7 @@ function Navbar(props) {
     var token = localStorage.getItem("token");
     if (token !== null) {
       var decoded = jwt_decode(token);
-      // setUserName(decoded.username);
-      // setUserImage(decoded.imageUser);
+      
       setIdUser(decoded.id)
       async function getUser() {
         const response = await Axios.get(
