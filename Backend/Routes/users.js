@@ -4,9 +4,11 @@ const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const multer = require('multer');
-const uuidv4 = require('uuid');
+// const uuidv4 = require('uuid/v4');
+const { uuid } = require('uuidv4');
 
-const DIR = '../Public/';
+
+const DIR = '../Backend/Public/';
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -14,7 +16,7 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
       const fileName = file.originalname.toLowerCase().split(' ').join('-');
-      cb(null, uuidv4() + '-' + fileName)
+      cb(null, uuid() + '-' + fileName)
   }
 });
 var upload = multer({
@@ -167,7 +169,7 @@ router.put("/:_id",upload.single('imageUser') ,(req, res, next) => {
         email,
         password,
         confirmPassword,
-        imageUser:{...imageUser, imageUser= url + '/public/' + req.file.filename ,
+        imageUser: imageUser= url + '/public/' + req.file.filename ,
         imageCover,
         dataOfBirth,
         aboutUser,

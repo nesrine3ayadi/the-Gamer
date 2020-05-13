@@ -33,7 +33,7 @@ const onSubmit = (e) =>{
     e.preventDefault()
     const formData = new FormData()
     formData.append('imageUser', profileImg)
-    Axios.post(`http://localhost:5000/${props.match.params.idUser}`, formData, {
+    Axios.put(`http://localhost:5000/${props.match.params.idUser}`, formData, {
     }).then(res => {
         console.log(res)
     })
@@ -55,38 +55,38 @@ const onSubmit = (e) =>{
        
         </div>
       </div>
-      <div classNameName="row">      
-      <FormControl classNameName="col-md-8">
+      <div className="row">      
+      <FormControl className="col-md-8">
         <InputLabel htmlFor="usename">Username</InputLabel>
         <Input id="username" aria-describedby="my-helper-text"  value ={props.currentUser.username}/>
         <FormHelperText id="my-helper-text">
           Change your username.
         </FormHelperText>
       </FormControl>
-      <FormControl classNameName="col-md-8">
+      <FormControl className="col-md-8">
         <InputLabel htmlFor="Email">Email address</InputLabel>
         <Input id="Email" aria-describedby="my-helper-text"  value={props.currentUser.email} />
         <FormHelperText id="my-helper-text">
          Put your email.
         </FormHelperText>
       </FormControl>
-      <FormControl classNameName="col-md-8">
+      <FormControl className="col-md-8">
         <InputLabel htmlFor="Aboutuser">About me</InputLabel>
         <Input id="Aboutuser" aria-describedby="my-helper-text" value={props.currentUser.aboutUser} />
         <FormHelperText id="my-helper-text">
          Write something about you
         </FormHelperText>
       </FormControl>
-      <FormControl classNameName="col-md-8">
+      <FormControl className="col-md-8">
         <InputLabel htmlFor="password">Password</InputLabel>
         <Input id="password" aria-describedby="my-helper-text" value={props.currentUser.password} />
         <FormHelperText id="my-helper-text">
         Change your password
         </FormHelperText>
       </FormControl>
-      <FormControl classNameName="col-md-8">
+      <FormControl className="col-md-8">
         <InputLabel htmlFor="password">Country</InputLabel>
-        <Input id="password" aria-describedby="my-helper-text" value={props.currentUser.country} />
+        <Input  aria-describedby="my-helper-text" value={props.currentUser.country} />
         <FormHelperText id="my-helper-text">
         Where are you from ?
         </FormHelperText>
