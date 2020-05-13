@@ -16,3 +16,6 @@ p#my-helper-text {
     color:  #cccccc !important;
     font-size: 14px !important;
 }
+.MuiInputBase-root input:focus {
+    border: 1px solid #a81d1d;
+}

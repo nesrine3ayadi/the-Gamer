@@ -28,6 +28,7 @@ const UserSchema = new Schema({
   },
   imageCover : {
     type: String,
+    default: "../Public/coverImage.jpg",
     required: false
   },
   dateOfBirth: {

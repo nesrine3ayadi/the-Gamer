@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import channelbanner from "../../img/channel-banner.png";
 import s2 from "../../img/s2.png";
 import Axios from "axios";
 import { connect } from "react-redux";
 import { displayCurrentUser } from "../../Actions/action";
 import "./profile.scss";
-import {Link} from "react-router-dom"
-
+import { Link } from "react-router-dom";
+import { Tabs, Tab} from 'react-bootstrap'
 import {
   FormControl,
   Input,
@@ -14,7 +14,6 @@ import {
   FormHelperText,
 } from "@material-ui/core";
 import Navbar from "../Navbar/navbar";
-
 
 const Profile = (props) => {
   const [profileImg, setProfileImg] = useState("");
@@ -39,23 +38,11 @@ const Profile = (props) => {
     getUser();
   }, [props.match.params.idUser]);
 
-
-
-
-  //
-  // useEffect(() => {
-  //   Axios.get(
-  //     `http://localhost:5000/profile/${props.match.params.idUser}`
-  //   ).then((resp) => props.displayCurrentUser(resp.data));
-  // },[] );
-
- 
   const onFileChange = (e) => {
     setProfileImg(e.target.files[0]);
   };
 
   const onSubmit = () => {
- 
     const formData = new FormData();
     formData.append("username", username);
     formData.append("imageUser", profileImg);
@@ -63,7 +50,7 @@ const Profile = (props) => {
     formData.append("password", password);
     formData.append("aboutUser", aboutUser);
     formData.append("country", country);
-    console.log(formData)
+    console.log(formData);
     Axios.put(
       `http://localhost:5000/${props.match.params.idUser}`,
       formData,
@@ -73,21 +60,25 @@ const Profile = (props) => {
     });
   };
 
- 
-
   return (
-    
-    <div>
-      <Navbar />
-      {console.log("this is current user " +props.currentUser.username)}
-      <div className="single-channel-page" id="content-wrapper">
+    <Fragment>
+  <Navbar />
+  
+    <div className="row">
+      {console.log("this is current user " + props.currentUser.username)}
+      <div className="col-md-3">
+        CHAAAT
+      </div>
+      <div className="single-channel-page col-md-9" id="content-wrapper">
         <div className="single-channel-image">
-          <img className="img-fluid" alt="" src={channelbanner} />
+          <img className="img-fluid" alt="" src={props.currentUser.imageCover} />
           <div className="channel-profile">
             <img className="channel-profile-img" alt="" src={s2} />
           </div>
         </div>
-        <div className="row">
+        <Tabs defaultActiveKey="videos" id="uncontrolled-tab-example">
+          <Tab eventKey="editProfile" title="edit Profile">
+          <div className="row">
           <FormControl className="col-md-8">
             <InputLabel htmlFor="usename">Username</InputLabel>
             <Input
@@ -146,39 +137,45 @@ const Profile = (props) => {
             </FormHelperText>
           </FormControl>
           <FormControl className="col-md-8">
-            <form >
+            <form>
               <div className="form-group">
                 <Input
                   aria-describedby="my-helper-text"
                   type="file"
                   onChange={onFileChange}
-                  
                 />
                 <FormHelperText id="my-helper-text">
                   change your profile picture
                 </FormHelperText>
               </div>
               <div className="form-group">
-              <Link to="/home">
-                <button className="btn btn-primary" type="submit" onClick={()=>onSubmit()}>
-                  update profile
-                </button></Link>  
+                <Link to="/home">
+                  <button
+                    className="btn btn-primary"
+                    type="submit"
+                    onClick={() => onSubmit()}
+                  >
+                    update profile
+                  </button>
+                </Link>
               </div>
             </form>
           </FormControl>
-          {/* <ImageUploader
-                withIcon={true}
-                buttonText='Choose images'
-                onChange={()=>onDrop()}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                maxFileSize={5242880}
-                withPreview={true}
-                singleImage={true}
-            /> */}
-          {console.log("HELLOOOOOO" + profileImg)}{" "}
+         
+        
         </div>
+          </Tab>
+          <Tab eventKey="videos" title="Videos">
+                Videos
+          </Tab>
+          <Tab eventKey="donate" title="Donate" >
+              Donate
+          </Tab>
+        </Tabs>
+        
       </div>
     </div>
+    </Fragment>
   );
 };
 const mapStateToPops = (state) => ({ currentUser: state.currentUser });
