@@ -72,11 +72,11 @@ const Profile = (props) => {
       <div className="col-md-3">
         CHAAAT
       </div>
-      <div className="single-channel-page col-md-9" id="content-wrapper">
-        <div className="single-channel-image">
+      <div className="single-channel-page col-md-9" id="content-wrapper" >
+        <div className="single-channel-image" style={{height:"300px", overflow:"hidden" }}>
           <img className="img-fluid" alt="" src={coverImg} />
           <div className="channel-profile">
-            <img className="channel-profile-img" alt="" src={s2} />
+            <img className="channel-profile-img" alt="" src={profileImg} />
           </div>
         </div>
         <Tabs defaultActiveKey="videos" id="uncontrolled-tab-example">
