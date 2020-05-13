@@ -5,6 +5,8 @@ import jwt_decode from "jwt-decode";
 import {Dropdown} from 'react-bootstrap'
 import "./navbar.scss";
 import {Link} from 'react-router-dom'
+import Axios from "axios"
+
 
 function Navbar(props) {
   const [username, setUserName] = useState("");
@@ -15,11 +17,21 @@ function Navbar(props) {
     var token = localStorage.getItem("token");
     if (token !== null) {
       var decoded = jwt_decode(token);
-      setUserName(decoded.username);
-      setUserImage(decoded.imageUser);
+      // setUserName(decoded.username);
+      // setUserImage(decoded.imageUser);
       setIdUser(decoded.id)
+      async function getUser() {
+        const response = await Axios.get(
+          `http://localhost:5000/profile/${decoded.id}`
+        );
+        setUserName(response.data.username);
+        setUserImage(response.data.imageUser);
+        
+      }
+      getUser();
+
     }
-  }, []);
+  }, [username,idUser,imageUser]);
   return (
     <nav className="navbar navbar-expand navbar-light  static-top osahan-nav ">
       <a className="navbar-brand mr-1" href="index.html">

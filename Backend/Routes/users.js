@@ -169,7 +169,7 @@ router.put("/:_id",upload.single('imageUser') ,(req, res, next) => {
         email,
         password,
         confirmPassword,
-        imageUser: imageUser= url + '/public/' + req.file.filename ,
+        imageUser:  url + '/public/' + req.file.filename ,
         imageCover,
         dataOfBirth,
         aboutUser,
