@@ -33,7 +33,7 @@ function HomePage(props) {
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Quis ipsum{" "}
+                    aliqua. Quis ipsum
                   </p>
                   <a href="#" className="btn_1">
                     Watch Tutorial
@@ -58,7 +58,7 @@ function HomePage(props) {
           </div>
           <div className="row justify-content-center">
             {props.users.map((user) => (
-              <div className="col-lg-3 col-sm-6">
+              <div key={user._id} className="col-lg-4 col-sm-12 text-center" style={{ marginBottom: "30px"}}>
                 <ChannelCard user={user} />
                
               </div>

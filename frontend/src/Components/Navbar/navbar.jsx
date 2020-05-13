@@ -33,7 +33,7 @@ function Navbar(props) {
   }, [username]);
   return (
     <nav className="navbar navbar-expand navbar-light  static-top osahan-nav ">
-      <a className="navbar-brand mr-1" href="index.html">
+      <a className="navbar-brand mr-1" href="/home">
         <img className="img-fluid logo" width="130" alt="" src={logo} />
       </a>
       {/* <!-- Navbar Search --> */}
