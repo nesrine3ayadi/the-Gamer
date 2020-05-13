@@ -12,6 +12,8 @@ app.use(bodyParser.json())
 app.use(cors());
 app.use(passport.initialize())
 
+app.use('./public', express.static('public'));
+
 // passport conig 
 require("./MiddleWare/passport")(passport)
 
@@ -28,6 +30,8 @@ mongoose
   })
   .then(() => console.log("The database is connected!"))
   .catch((err) => console.error(err));
+ 
+  app.use('/public', express.static('public'));
 
   // Use Routes
   app.use('/', users);

@@ -17,17 +17,32 @@ import  Navbar  from "../Navbar/navbar";
 
 
 const Profile =(props)=> {
-  const [pictures , setPictures ] = useState([])
-  const onDrop = picture=> {
-    setPictures(
-        pictures.concat(picture),
-    );
+  // const [pictures , setPictures ] = useState([])
+  // const onDrop = picture=> {
+  //   setPictures(
+  //       pictures.concat(picture),
+  //   );
+
+// }
+   const [profileImg, setProfileImg] = useState('')
+   const onFileChange = (e)  => {
+    setProfileImg( e.target.files[0] )
 }
-   
-  useEffect(()=>{
-    Axios.get(`http://localhost:5000/profile/${props.match.params.idUser}`).then(resp=>props.displayCurrentUser(resp.data))
+
+const onSubmit = (e) =>{
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append('imageUser', profileImg)
+    Axios.post(`http://localhost:5000/${props.match.params.idUser}`, formData, {
+    }).then(res => {
+        console.log(res)
+    })
+}
+
+   useEffect(()=>{
+     Axios.get(`http://localhost:5000/profile/${props.match.params.idUser}`).then(resp=>props.displayCurrentUser(resp.data))
      
-  },[])
+   },[])
  
     
   return (
@@ -76,7 +91,7 @@ const Profile =(props)=> {
         Where are you from ?
         </FormHelperText>
       </FormControl>
-      <ImageUploader
+      {/* <ImageUploader
                 withIcon={true}
                 buttonText='Choose images'
                 onChange={()=>onDrop()}
@@ -84,8 +99,17 @@ const Profile =(props)=> {
                 maxFileSize={5242880}
                 withPreview={true}
                 singleImage={true}
-            />
-      
+            /> */}
+         <form onSubmit={onSubmit}>
+                        <div className="form-group">
+                            <input type="file" onChange={onFileChange} />
+                        </div>
+                        <div className="form-group">
+                            <button className="btn btn-primary" type="submit">Upload</button>
+                        </div>
+                    </form>
+                    {console.log('HELLOOOOOO' + profileImg)}
+     
       </div>
     </div>
   );
