@@ -4,10 +4,19 @@ import ChannelCard from "../ChannelCard/ChannelCard";
 import "./HopePage.scss";
 import Sidebar from "../Sidebar/sidebar";
 import { connect } from "react-redux";
-
+import Axios from "axios"
+import {displayUser} from "../../Actions/action"
 
 function HomePage(props) {
-
+  useEffect(()=>{
+    async function getGamers()
+    {
+     const response = await Axios.get("http://localhost:5000/");
+     props.displayUser(response.data)
+    } 
+     getGamers()
+ 
+   })
  
   return (
     <Fragment>
@@ -64,4 +73,4 @@ function HomePage(props) {
 const mapStatetoProps = state => ({
   users: state.users,
 });
-export default connect(mapStatetoProps)(HomePage);
+export default connect(mapStatetoProps,{displayUser})(HomePage);

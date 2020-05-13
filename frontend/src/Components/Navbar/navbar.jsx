@@ -31,7 +31,7 @@ function Navbar(props) {
       getUser();
 
     }
-  }, [username,idUser,imageUser]);
+  }, [username]);
   return (
     <nav className="navbar navbar-expand navbar-light  static-top osahan-nav ">
       <a className="navbar-brand mr-1" href="index.html">

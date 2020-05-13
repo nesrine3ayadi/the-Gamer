@@ -5,7 +5,7 @@ import Axios from "axios";
 import { connect } from "react-redux";
 import { displayCurrentUser } from "../../Actions/action";
 import "./profile.scss";
-
+import {Link} from "react-router-dom"
 
 import {
   FormControl,
@@ -54,8 +54,8 @@ const Profile = (props) => {
     setProfileImg(e.target.files[0]);
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = () => {
+ 
     const formData = new FormData();
     formData.append("username", username);
     formData.append("imageUser", profileImg);
@@ -63,6 +63,7 @@ const Profile = (props) => {
     formData.append("password", password);
     formData.append("aboutUser", aboutUser);
     formData.append("country", country);
+    console.log(formData)
     Axios.put(
       `http://localhost:5000/${props.match.params.idUser}`,
       formData,
@@ -145,7 +146,7 @@ const Profile = (props) => {
             </FormHelperText>
           </FormControl>
           <FormControl className="col-md-8">
-            <form onSubmit={onSubmit}>
+            <form >
               <div className="form-group">
                 <Input
                   aria-describedby="my-helper-text"
@@ -158,9 +159,10 @@ const Profile = (props) => {
                 </FormHelperText>
               </div>
               <div className="form-group">
-                <button className="btn btn-primary" type="submit">
-                  update Profile
-                </button>
+              <Link to="/home">
+                <button className="btn btn-primary" type="submit" onClick={()=>onSubmit()}>
+                  update profile
+                </button></Link>  
               </div>
             </form>
           </FormControl>

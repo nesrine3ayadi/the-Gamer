@@ -5,16 +5,13 @@ import Login from './Components/Login/Login';
 import { Route } from 'react-router-dom';
 import HomePage from './Components/HomePage/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {displayUser} from "./Actions/action"
-import Axios from "axios"
-import { connect } from "react-redux";
+
+
 import Profile from './Components/Profile/profile';
 
 
 function App(props) {
-  useEffect(()=>{
-    Axios.get("http://localhost:5000/").then(resp => props.displayUser(resp.data))
-  },)
+
   return (
     <div className="App">
     
@@ -26,4 +23,4 @@ function App(props) {
   );
 }
 
-export default connect(null,{displayUser})(App);
+export default App;
