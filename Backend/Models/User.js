@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+
 //Create Schema
-// TEEEEEEEEEEEEEEEEEEEST
+
 const UserSchema = new Schema({
   username: {
     type: String,
@@ -28,7 +29,7 @@ const UserSchema = new Schema({
   },
   imageCover : {
     type: String,
-    default: "../Public/coverImage.jpg",
+    default: "http://localhost:5000/public/coverImage.jpg",
     required: false
   },
   dateOfBirth: {
