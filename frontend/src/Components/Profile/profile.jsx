@@ -17,11 +17,18 @@ import  Navbar  from "../Navbar/navbar";
 
 
 const Profile =(props)=> {
+  const [pictures , setPictures ] = useState([])
+  const onDrop = picture=> {
+    setPictures(
+        pictures.concat(picture),
+    );
+}
    
   useEffect(()=>{
     Axios.get(`http://localhost:5000/profile/${props.match.params.idUser}`).then(resp=>props.displayCurrentUser(resp.data))
      
   },[])
+ 
     
   return (
     <div className="single-channel-page" id="content-wrapper">
@@ -69,6 +76,15 @@ const Profile =(props)=> {
         Where are you from ?
         </FormHelperText>
       </FormControl>
+      <ImageUploader
+                withIcon={true}
+                buttonText='Choose images'
+                onChange={()=>onDrop()}
+                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+                withPreview={true}
+                singleImage={true}
+            />
       
       </div>
     </div>
