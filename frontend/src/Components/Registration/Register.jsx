@@ -3,6 +3,7 @@ import "./Register.scss";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 
+
 function Register(props) {
     const [exist, setExist] = useState("")
     const [user, setUser] = useState({
@@ -11,7 +12,7 @@ function Register(props) {
         password: "",
         confirmPassword: "",
         imageUser: "https://cdn.dribbble.com/users/567082/screenshots/4356358/profile_picture.png",
-        imageCover: "",
+        imageCover: "https://i.pcmag.com/imagery/articles/05pGSLeBVTWQNoDPNG2midy-4.fit_scale.size_2698x1517.v1573262409.jpg",
         dataOfBirth: "",
         aboutUser: "",
         country: "",

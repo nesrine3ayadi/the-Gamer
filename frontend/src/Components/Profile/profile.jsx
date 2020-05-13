@@ -17,6 +17,7 @@ import Navbar from "../Navbar/navbar";
 
 const Profile = (props) => {
   const [profileImg, setProfileImg] = useState("");
+  const [coverImg, setCoverImg] = useState("");
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,6 +30,7 @@ const Profile = (props) => {
         `http://localhost:5000/profile/${props.match.params.idUser}`
       );
       setProfileImg(response.data.imageUser);
+      setCoverImg(response.data.imageCover)
       setUserName(response.data.username);
       setEmail(response.data.email);
       setPassword(response.data.password);
@@ -46,6 +48,7 @@ const Profile = (props) => {
     const formData = new FormData();
     formData.append("username", username);
     formData.append("imageUser", profileImg);
+    formData.append("imageCover",coverImg);
     formData.append("email", email);
     formData.append("password", password);
     formData.append("aboutUser", aboutUser);
@@ -71,7 +74,7 @@ const Profile = (props) => {
       </div>
       <div className="single-channel-page col-md-9" id="content-wrapper">
         <div className="single-channel-image">
-          <img className="img-fluid" alt="" src={props.currentUser.imageCover} />
+          <img className="img-fluid" alt="" src={coverImg} />
           <div className="channel-profile">
             <img className="channel-profile-img" alt="" src={s2} />
           </div>
