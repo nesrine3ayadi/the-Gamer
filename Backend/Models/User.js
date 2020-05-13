@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const imgcover = require('../')
-//Create Schema
 
+//Create Schema
+// TEEEEEEEEEEEEEEEEEEEST
 const UserSchema = new Schema({
   username: {
     type: String,
