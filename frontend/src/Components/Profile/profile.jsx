@@ -14,6 +14,7 @@ import {
   FormHelperText,
 } from "@material-ui/core";
 import Navbar from "../Navbar/navbar";
+import Dashboard from "../Chat/Dashboard";
 
 const Profile = (props) => {
   const [profileImg, setProfileImg] = useState("");
@@ -69,9 +70,7 @@ const Profile = (props) => {
   
     <div className="row">
       {console.log("this is current user " + props.currentUser.username)}
-      <div className="col-md-3">
-        CHAAAT
-      </div>
+   
       <div className="single-channel-page col-md-9" id="content-wrapper" >
         <div className="single-channel-image" style={{height:"300px", overflow:"hidden" }}>
           <img className="img-fluid" alt="" src={coverImg} />
@@ -176,6 +175,9 @@ const Profile = (props) => {
           </Tab>
         </Tabs>
         
+      </div>
+      <div className="col-md-3">
+        <Dashboard />
       </div>
     </div>
     </Fragment>
