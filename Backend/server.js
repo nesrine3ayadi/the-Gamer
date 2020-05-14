@@ -58,22 +58,44 @@ function verifyToken(req, res, next) {
 }
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
-var app1 = require('express')();
-app1.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
+// var app1 = require('express')();
+// app1.get('/', function(req, res){
+//   res.sendFile(__dirname + '/index.html');
+// });
 
-//connect to server
-io.on('connection', (socket) => {
-  console.log('a user connected');
-   socket.on('chat message', (msg) => {
-      console.log('message: ' + JSON.stringify(msg));
-      io.emit('chat message', msg);
-    });
+//connect to server http of msg
+io.on('connect', (socket) => {
+  socket.on('join', ({ name, room }, callback) => {
+    const { error, user } = addUser({ id: socket.id, name, room });
 
-    socket.on("disconnect",()=>{
-      console.log("user diconnected")
-    })
+    if(error) return callback(error);
+
+    socket.join(user.room);
+
+    socket.emit('message', { user: 'admin', text: `${user.name}, welcome to room ${user.room}.`});
+    socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} has joined!` });
+
+    io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
+
+    callback();
+  });
+
+  socket.on('sendMessage', (message, callback) => {
+    const user = getUser(socket.id);
+
+    io.to(user.room).emit('message', { user: user.name, text: message });
+
+    callback();
+  });
+
+  socket.on('disconnect', () => {
+    const user = removeUser(socket.id);
+
+    if(user) {
+      io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has left.` });
+      io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)});
+    }
+  })
 });
 
 http.listen(5001, () => {
