@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors")
 const passport = require("passport")
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 
 
 const users = require("./Routes/users");
