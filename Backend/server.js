@@ -58,7 +58,10 @@ function verifyToken(req, res, next) {
 }
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
-
+var app1 = require('express')();
+app1.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
 
 //connect to server
 io.on('connection', (socket) => {

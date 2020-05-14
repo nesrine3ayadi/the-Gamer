@@ -1,61 +1,62 @@
-import React from "react";
-import io from 'socket.io-client'
-export const CTX = React.createContext();
+import React, { createContext, useReducer } from "react";
+import io from "socket.io-client";
+export const ctx = createContext();
 
+/**
+  initState = {
+    topic1: [
+      {form: "", msg: "hi"}
+    ]
+  }
+ */
 
-const initState = {
-    general:[
-        { from:"mohamed", msg:"hello general"}, 
-        { from:"anas", msg:"hello general"}, 
-        { from:"nesrine", msg:"hello general"}, 
-     ],
-     topic2:[
-        { from:"mohamed", msg:"hello Topic2"}, 
-        { from:"anas", msg:"hello Topic 2"}, 
-        { from:"nesrine", msg:"hello Topic2"}, 
-        
-     ]
-}
-
-
-function reducer(state = initState, action) {
-    const {from, msg, topic} = action.payload;
+export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
+const initialState = {
+  topic1: [
+    { from: "use1", msg: "hi" },
+    { from: "use2", msg: "hello" },
+    { from: "use3", msg: "I’d like you to…" }
+  ],
+  topic2: [
+    { from: "use5", msg: "Are you sure…?" },
+    { from: "use2", msg: "I cannot wait to…" },
+    { from: "use3", msg: "I dare say…" }
+  ]
+};
+const reducer = (state, action) => {
+  const { from, msg, topic } = action.payload;
   switch (action.type) {
-    case "RECIEVE_MESSAGE":
+    case RECEIVE_MESSAGE:
       return {
-          ...state,[topic]:[
-              ...state[topic],
-              {
-                  from,
-                  msg,
-                 
-              }
-           ]
+        ...state,
+        [topic]: [...state[topic], { from, msg }]
       };
     default:
       return state;
   }
-}
+};
+
 let socket;
+const user = "user" + Math.random().toFixed(2) * 100
 
-function sendChatAction (value){
-    socket.emit('chat message', value);
+function sendMessageAction(value) {
+  socket.emit("chat message", value);
 }
 
+const Store = props => {
+  const [allCharts, dispatch] = useReducer(reducer, initialState);
 
-function Store(props) {
-    const [allChats, dispatch] = React.useReducer(reducer, initState);
+  if (!socket) {
+    socket = io(":5001");
+    socket.on("chat message", function(msg) {
+      dispatch({ type: RECEIVE_MESSAGE, payload: msg });
+    });
+  }
 
-    if(!socket){
-        socket = io(':5001');
-        socket.on('chat message', function(msg){
-            console.log(msg)
-            dispatch({type:'RECIEVE_MESSAGE', payload: msg})
-          });
-    }
-    const user = 'Mohamed' + Math.random(100).toFixed(2)
-
-  return <CTX.Provider value={{allChats, sendChatAction, user}}>{props.children}</CTX.Provider>;
-}
-
+  return (
+    <ctx.Provider value={{ allCharts, sendMessageAction, user }}>
+      {props.children}
+    </ctx.Provider>
+  );
+};
 export default Store;
