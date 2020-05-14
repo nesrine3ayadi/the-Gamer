@@ -85,7 +85,7 @@ const topics = Object.keys(allChats);
             {allChats[activeTopic].map((chat, i) => (
               <div className={classes.flex} key={i}>
                 <Chip label={chat.from} />
-                {console.log('pppppp ' + chat.msg)}
+                
                 <Typography variant="body1" gutterBottom>{chat.msg}</Typography>
               </div>
             ))}

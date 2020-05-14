@@ -58,6 +58,8 @@ function verifyToken(req, res, next) {
 }
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
+
+
 //connect to server
 io.on('connection', (socket) => {
   console.log('a user connected');
@@ -67,6 +69,9 @@ io.on('connection', (socket) => {
     });
 });
 
+http.listen(5001, () => {
+  console.log('listening on *:5001');
+});
 
 const port = process.env.PORT || 5000;
 app.listen(port, ()=>console.log(`Server is running on port ${port}` ))

@@ -15,6 +15,7 @@ import {
 } from "@material-ui/core";
 import Navbar from "../Navbar/navbar";
 import Dashboard from "../Chat/Dashboard";
+import Store from '../Chat/Store';
 
 const Profile = (props) => {
   const [profileImg, setProfileImg] = useState("");
@@ -177,7 +178,10 @@ const Profile = (props) => {
         
       </div>
       <div className="col-md-3">
+        <Store>
         <Dashboard />
+        </Store>
+        
       </div>
     </div>
     </Fragment>
