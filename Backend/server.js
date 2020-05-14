@@ -66,10 +66,14 @@ app1.get('/', function(req, res){
 //connect to server
 io.on('connection', (socket) => {
   console.log('a user connected');
-  socket.on('chat message', (msg) => {
+   socket.on('chat message', (msg) => {
       console.log('message: ' + JSON.stringify(msg));
       io.emit('chat message', msg);
     });
+
+    socket.on("disconnect",()=>{
+      console.log("user diconnected")
+    })
 });
 
 http.listen(5001, () => {
