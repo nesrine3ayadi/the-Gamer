@@ -23,19 +23,21 @@ const Chat = (props) => {
   useEffect(() => {
     async function getUsers() {
       const response = await axios.get(
-        `http://localhost:5000/profile/${props.match.params.idUser}`
+        `http://localhost:5000/profile/${props.id}`
       );
-      setRoom("Mohamed");
-      setName("Nesrine");
+      setRoom(response.data.username);
+      console.log("room : " + room);
+      setName(props.currentUser.username);
+      socket.emit("join", { name, room }, (error) => {
+        if (error) {
+          alert(error);
+        }
+      });
     }
     getUsers();
-    socket.emit("join", { name, room }, (error) => {
-      if (error) {
-        alert(error);
-      }
-    });
+  
   });
-  console.log("room : " + room);
+  
 
   useEffect(() => {
     socket.on("message", (message) => {
