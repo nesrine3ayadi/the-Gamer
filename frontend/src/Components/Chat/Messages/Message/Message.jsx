@@ -18,7 +18,7 @@ const Message = ({ message: { text, user }, name }) => {
       setImg(decoded.imageUser);
       console.log("user img : " + img);
     }
-  });
+  },[]);
   
   let isSentByCurrentUser = false;
 
