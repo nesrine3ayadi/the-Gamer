@@ -1,11 +1,44 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './VideoCard.scss'
+import "../../../node_modules/video-react/dist/video-react.css"; // import css
+import { Player } from 'video-react';
+import { Button, Modal } from 'react-bootstrap';
 
 function VideoCard() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
     return (
         <div class="videoo">
- 
-        <div class="example-2 cardvideo">
+          <div class="example-2 cardvideo">
+          
+       <img className="modalimg" onClick={handleShow} src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTNrqO5DPqH9hy05Nqn_SSjXeiZ1LTe3CT9c2LWn6dgaZr5yiKC&usqp=CAU" />
+       <p onClick={handleShow} > Video Title</p>
+   
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Video Title</Modal.Title>
+        </Modal.Header>
+        <Player
+      playsInline
+      poster="/assets/poster.png"
+      src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+    />
+    <div className="icongroupe">
+    <i class="fab fa-gratipay"></i>
+    <i class="far fa-comments"></i>
+    </div>
+        <Modal.Footer>
+         
+         
+        </Modal.Footer>
+      </Modal>
+  </div>
+    
+        {/* 
           <div class="wrapper">
             <div class="header">
               <div class="date">
@@ -100,8 +133,8 @@ function VideoCard() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div> */}
+      </div> 
     )
 }
 

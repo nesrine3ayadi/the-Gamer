@@ -56,7 +56,7 @@ function Navbar(props) {
         <li className="nav-item mx-1">
           <a className="btn_1" href="upload.html">
             <i className="fas fa-plus-circle fa-fw"></i>
-            Start your stream
+            Catégories
           </a>
         </li>
 

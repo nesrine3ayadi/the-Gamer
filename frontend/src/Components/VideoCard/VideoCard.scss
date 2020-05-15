@@ -32,11 +32,23 @@ h1 {
   font-family: $open-sans;
   font-weight: 300;
 }
-
-
+.icongroupe{
+  display: flex;
+  text-align: center;
+  
+}
+.icongroupe i {
+  font-size: 18px;
+  padding: 10px 25px;
+}
+.modalimg{
+  cursor: pointer;
+}
 // Base styles
 .cardvideo {
   float: left;
+  text-align: center;
+  color: white;
   padding: 0 1.7rem;
   width: 50%;
   margin: 25px 0px;
