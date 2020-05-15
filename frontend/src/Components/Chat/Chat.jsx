@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import queryString from "query-string";
 import io from "socket.io-client";
 import { connect } from "react-redux";
 import TextContainer from "./TextContainer";
@@ -13,23 +12,26 @@ import "./Chat.scss";
 let socket;
 
 const Chat = (props) => {
-  const [name, setName] = useState("myname");
-  const [room, setRoom] = useState("room");
-  const [users, setUsers] = useState([{name:"firstname",room:"firstroom"}]);
-  const [message, setMessage] = useState("welcome you piece of shit");
+  const [name, setName] = useState('visitor'+Date.now());
+  const [room, setRoom] = useState('room');
+  const [users, setUsers] = useState('');
+  const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = "localhost:5001";
+  const ENDPOINT = 'localhost:5001';
 
   useEffect(() => {
     async function getUsers() {
       const response = await axios.get(
         `http://localhost:5000/profile/${props.id}`
       );
-      setRoom(response.data.username);
-     
-      setName(props.current.username);
+      // setRoom(response.data.username)
       }
+    
     getUsers();
+    // setName(props.current.username);
+    setRoom("room")
+    setName(props.current.username)
+    socket = io(ENDPOINT);
     socket.emit("join", {name, room }, (error) => {
       if (error) {
         alert(error);
@@ -37,7 +39,7 @@ const Chat = (props) => {
     });
   
   
-  });
+  },[ENDPOINT,name]);
   
 
   useEffect(() => {
@@ -77,6 +79,6 @@ const Chat = (props) => {
   );
 };
 const mapStateToprops = (state) => ({
-  current: state.currentUser,
+  current: state.currentUser
 });
 export default connect(mapStateToprops)(Chat);

@@ -6,7 +6,7 @@ import {Dropdown} from 'react-bootstrap'
 import "./navbar.scss";
 import {Link} from 'react-router-dom'
 import Axios from "axios"
-
+import {displayCurrentUser} from "../../Actions/action"
 
 function Navbar(props) {
   const [username, setUserName] = useState("");
@@ -25,7 +25,7 @@ function Navbar(props) {
         );
         setUserName(response.data.username);
         setUserImage(response.data.imageUser);
-        
+        props.displayCurrentUser(response.data)
       }
       getUser();
 
@@ -90,4 +90,4 @@ function Navbar(props) {
   );
 }
 const mapStateToProps = (state) => ({ connected: state.connectedUser });
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps,{displayCurrentUser})(Navbar);

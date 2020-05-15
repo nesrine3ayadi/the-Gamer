@@ -18,7 +18,7 @@ function Login(props) {
       .then(res => {
         localStorage.setItem("token", res.data.token);
         props.history.push("/home");
-        displayCurrentUser(res.data.token)
+        // props.displayCurrentUser(res.data.token)
       })
       .catch(err => {
         setMsg("** Please verify your login & password !!!");
@@ -89,4 +89,4 @@ function Login(props) {
   );
 }
 
-export default withRouter(Login);
+export default withRouter(connect(null,{displayCurrentUser})(Login));
