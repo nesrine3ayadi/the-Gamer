@@ -34,7 +34,7 @@ function Navbar(props) {
   return (
     <nav className="navbar navbar-expand navbar-light  static-top osahan-nav ">
       <a className="navbar-brand mr-1" href="/home">
-        <img className="img-fluid logo" width="130" alt="" src={logo} />
+        <img className="img-fluid logo" width="100" alt="" src={logo} />
       </a>
       {/* <!-- Navbar Search --> */}
       <form className="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 my-2 my-md-0 osahan-navbar-search">
@@ -76,6 +76,7 @@ function Navbar(props) {
                  </Link>
                 </Dropdown.Item>
                 <Dropdown.Item href="#/action-2">Notifications</Dropdown.Item>
+                <Dropdown.Item href={`/editProfile/${idUser}`}> Edit profile</Dropdown.Item>
                 <Dropdown.Item href="/home" onClick={() => localStorage.removeItem("token")}>Logout</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

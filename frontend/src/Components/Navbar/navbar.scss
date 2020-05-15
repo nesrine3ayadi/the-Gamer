@@ -1,50 +1,54 @@
-#sidebarToggle{
-    width: 30px;
+#sidebarToggle {
+  width: 30px;
 }
 
 #mysearchbtn {
-    margin: 0 !important;
-    background: transparent;
-    right: 50px;
+  margin: 0 !important;
+  background: transparent;
+  right: 50px;
 }
 .btn_1:hover {
-    color: #a81d1d !important;
-    background-position: right center;
+  color: #a81d1d !important;
+  background-position: right center;
 }
 .form-control:focus {
-    border: 1px solid #a81d1d !important;
-    box-shadow: 0 0 0 1px #a81d1d !important;
+  border: 1px solid #a81d1d !important;
+  box-shadow: 0 0 0 1px #a81d1d !important;
 }
 .input-group-append {
-    background: transparent;
+  background: transparent;
 }
 input.form-control {
-    border-radius: 8px !important;
+  border-radius: 8px !important;
 }
-.nav-link{
-    color: #888 !important;
-
+.nav-link {
+  color: #888 !important;
 }
 input.form-control {
-    background: transparent !important;
-    border: 1px solid #888 !important;
+  background: transparent !important;
+  border: 1px solid #888 !important;
 }
-img.logo{
-    padding-left: 50px;
+img.logo {
+  padding-left: 50px;
 }
-.navbar{
-    z-index: 9; 
-    background: #0b0f18;
+.navbar {
+  z-index: 9;
+  background: #0b0f18;
+}
+.navbar {
+  margin-bottom: 40px;
+  height: 50px;
+  padding: 2.55rem 1rem !important;
 }
 button#dropdown-basic img {
-    border-radius: 50px;
-    padding-right: 10px;
+  border-radius: 50px;
+  padding-right: 10px;
 }
 button#dropdown-basic {
-    margin-top: 6px;
-    background: inherit;
+  margin-top: 6px;
+  background: inherit;
 }
 
 button#dropdown-basic:focus {
-    box-shadow: none !important;
+  box-shadow: none !important;
 }

@@ -1,8 +1,77 @@
-import React from 'react'
+import React, { useState, useEffect, Fragment } from "react";
+import Axios from "axios";
+import { Link } from "react-router-dom";
+import "./EditProfile"
+import {
+  FormControl,
+  Input,
+  InputLabel,
+  FormHelperText,
+} from "@material-ui/core";
+import  Navbar  from '../Navbar/navbar';
 
-function EditProfile() {
+function EditProfile(props) {
+  const [profileImg, setProfileImg] = useState("");
+  const [coverImg, setCoverImg] = useState("");
+  const [username, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [aboutUser, setAboutUser] = useState("");
+  const [country, setCountry] = useState("");
+  //
+  useEffect(() => {
+    async function getUser() {
+      const response = await Axios.get(
+        `http://localhost:5000/editProfile/${props.match.params.idUser}`
+      );
+      setProfileImg(response.data.imageUser);
+      setCoverImg(response.data.imageCover)
+      setUserName(response.data.username);
+      setEmail(response.data.email);
+      setPassword(response.data.password);
+      setAboutUser(response.data.aboutUser);
+      setCountry(response.data.country);
+    }
+    getUser();
+  }, [props.match.params.idUser]);
+
+  const onFileChange = (e) => {
+    setProfileImg(e.target.files[0]);
+  };
+
+  const onSubmit = () => {
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("imageUser", profileImg);
+    formData.append("imageCover",coverImg);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("aboutUser", aboutUser);
+    formData.append("country", country);
+    console.log(formData);
+    Axios.put(
+      `http://localhost:5000/${props.match.params.idUser}`,
+      formData,
+      {}
+    ).then((res) => {
+      console.log(res);
+    });
+  };
     return (
-        <div className="row">
+      <Fragment>
+     <Navbar />
+     <div class="row" style={{ paddingLeft: "50px"}}>
+
+    
+       
+          
+      
+        <div className="single-channel-image col-md-8" style={{height:"300px", overflow:"hidden" }}>
+          <img className="img-fluid" alt="" src={coverImg} />
+          <div className="channel-profile">
+            <img className="channel-profile-img" alt="" src={profileImg} />
+          </div>
+        </div>
         <FormControl className="col-md-8">
           <InputLabel htmlFor="usename">Username</InputLabel>
           <Input
@@ -88,6 +157,8 @@ function EditProfile() {
        
       
       </div>
+     
+      </Fragment>
     )
 }
 

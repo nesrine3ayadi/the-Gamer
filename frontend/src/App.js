@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Profile from './Components/Profile/profile';
 import Join from "./Components/Chat/Join"
 import Chat from "./Components/Chat/Chat"
+import EditProfile from './Components/Edit Prolfile/EditProfile';
 
 
 function App(props) {
@@ -24,6 +25,7 @@ function App(props) {
        <Route exact path = "/profile/:idUser" component={Profile}></Route>
        <Route exact path = "/join" component={Join}></Route>
        <Route  path = "/chat" component={Chat}></Route>
+       <Route path="/editProfile/:idUser" component={EditProfile} ></Route>
 
       
     </div>

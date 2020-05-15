@@ -193,6 +193,11 @@ router.get("/profile/:_id", (req, res) => {
 });
 
 
+router.get("/editProfile/:_id", (req, res) => {
+  const{ _id} = req.params
+  User.findOne({ _id }).then(users => res.json(users)).catch(err=> console.log(err))
+});
+
 
 router.get("/", (req, res) => {
   res.send({ response: "Server is up and running." }).status(200);
