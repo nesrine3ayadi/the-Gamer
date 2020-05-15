@@ -15,6 +15,7 @@ import {
 } from "@material-ui/core";
 import Navbar from "../Navbar/navbar";
 import Chat from "../Chat/Chat";
+import VideoCard from "../VideoCard/VideoCard";
 
 
 const Profile = (props) => {
@@ -68,8 +69,8 @@ const Profile = (props) => {
   return (
     <Fragment>
   <Navbar />
-  <div class="container">
-    <div className="row">
+ 
+    <div className="row" id="profilePage">
       <div className="single-channel-page col-md-8" id="content-wrapper" >
         <div className="single-channel-image" style={{height:"300px", overflow:"hidden" }}>
           <img className="img-fluid" alt="" src={coverImg} />
@@ -78,11 +79,11 @@ const Profile = (props) => {
           </div>
         </div>
         <Tabs defaultActiveKey="videos" id="uncontrolled-tab-example">
-          <Tab eventKey="editProfile" title="edit Profile">
+          <Tab eventKey="editProfile" title="Stream">
         
           </Tab>
           <Tab eventKey="videos" title="Videos">
-                Videos
+               <VideoCard/>
           </Tab>
           <Tab eventKey="donate" title="Donate" >
               Donate
@@ -90,13 +91,13 @@ const Profile = (props) => {
         </Tabs>
         
       </div>
-      <div className="col-md-4 col-sm-12 col-xs-12">
+      <div className="col-md-4 col-sm-12 col-xs-12 chatRight">
         <Chat idprofile={props.match.params.idUser} />
        
         
       </div>
     </div>
-    </div>
+   
     </Fragment>
   );
 };

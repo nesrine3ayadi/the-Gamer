@@ -20,7 +20,10 @@ Version: 1.0
 	-- Footer
 */
 /* Body */
-
+button.btn.btn-signin:active {
+    color: #a81d1d !important;
+    border: 1px solid;
+}
 html {
     position: relative;
     min-height: 100%;
