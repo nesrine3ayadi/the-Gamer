@@ -178,7 +178,8 @@ const Profile = (props) => {
         
       </div>
       <div className="col-md-3">
-        <Chat id={props.match.params.idUser} />
+        <Chat idprofile={props.match.params.idUser} />
+       
         
       </div>
     </div>
