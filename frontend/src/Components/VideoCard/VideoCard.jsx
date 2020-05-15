@@ -3,7 +3,7 @@ import './VideoCard.scss'
 import "../../../node_modules/video-react/dist/video-react.css"; // import css
 import { Player } from 'video-react';
 import { Button, Modal } from 'react-bootstrap';
-
+//////
 
 function VideoCard() {
   const [show, setShow] = useState(false);
