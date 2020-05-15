@@ -68,10 +68,8 @@ const Profile = (props) => {
   return (
     <Fragment>
   <Navbar />
-  
+  <div class="container">
     <div className="row">
-      
-   
       <div className="single-channel-page col-md-8" id="content-wrapper" >
         <div className="single-channel-image" style={{height:"300px", overflow:"hidden" }}>
           <img className="img-fluid" alt="" src={coverImg} />
@@ -182,6 +180,7 @@ const Profile = (props) => {
        
         
       </div>
+    </div>
     </div>
     </Fragment>
   );
