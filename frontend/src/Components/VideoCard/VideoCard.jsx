@@ -3,7 +3,7 @@ import './VideoCard.scss'
 
 function VideoCard() {
     return (
-        <div class="">
+        <div class="videoo">
  
         <div class="example-2 cardvideo">
           <div class="wrapper">

@@ -1,10 +1,25 @@
 import React from "react";
-
+import jwt_decode from "jwt-decode";
 import "./Message.scss";
 
 import ReactEmoji from "react-emoji";
+import { useState, useEffect } from "react";
+
+
 
 const Message = ({ message: { text, user }, name }) => {
+  const [img, setImg] = useState("") 
+
+  useEffect(() => {
+
+    var token = localStorage.getItem("token");
+    if (token !== null) {
+      var decoded = jwt_decode(token);
+      setImg(decoded.imageUser);
+      console.log("user img : " + img);
+    }
+  });
+  
   let isSentByCurrentUser = false;
 
   const trimmedName = name.trim().toLowerCase();
@@ -16,16 +31,16 @@ const Message = ({ message: { text, user }, name }) => {
   return isSentByCurrentUser ? (
     <div className="d-flex justify-content-end mb-4">
       {/* <p className="sentText pr-10">{trimmedName}</p> */}
-      
+
       <div className="d-flex justify-content-start mb-4">
-       <div className="messageText msg_cotainer">
-      {ReactEmoji.emojify(text)}
-       <span class="msg_time">{user}</span>
-       </div>
-     
+        <div className="messageText msg_cotainer">
+          {ReactEmoji.emojify(text)}
+          <span class="msg_time">{user}</span>
+        </div>
+
         <div class="img_cont_msg">
           <img
-            src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+            src={img}
             class="rounded-circle user_img_msg"
           />
         </div>
@@ -33,16 +48,13 @@ const Message = ({ message: { text, user }, name }) => {
     </div>
   ) : (
     <div className="d-flex justify-content-start mb-4">
-     
-    
       <div class="img_cont_msg">
-      <img
-            src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-            class="rounded-circle user_img_msg"
-          />
-          </div>
+        <img
+          src={img}
+          class="rounded-circle user_img_msg"
+        />
+      </div>
       <div className="msg_cotainer_send">
-      
         {ReactEmoji.emojify(text)}
         <span class="msg_time">{user}</span>
       </div>
