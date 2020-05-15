@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./Login.scss";
 import { withRouter } from "react-router-dom";
-import {connect } from "react-redux"
-import {displayCurrentUser} from "../../Actions/action"
 import Axios from "axios";
 
 function Login(props) {
@@ -89,4 +87,4 @@ function Login(props) {
   );
 }
 
-export default withRouter(connect(null,{displayCurrentUser})(Login));
+export default withRouter(Login);

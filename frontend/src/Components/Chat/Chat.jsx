@@ -6,6 +6,7 @@ import Messages from "./Messages/Messages";
 import InfoBar from "./InfoBar";
 import Input from "./Input";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 import "./Chat.scss";
 
@@ -30,7 +31,12 @@ const Chat = (props) => {
     getUsers();
     // setName(props.current.username);
     // setRoom("room")
-    setName(props.current.username)
+    var token = localStorage.getItem("token");
+    if (token !== null) {
+      var decoded = jwt_decode(token);
+      setName(decoded.username)
+    }
+    
     socket = io(ENDPOINT);
     socket.emit("join", {name, room }, (error) => {
       if (error) {
