@@ -70,7 +70,7 @@ function Navbar(props) {
                 {username}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-              <Dropdown.Item >
+              <Dropdown.Item href={`/profile/${idUser}`}>
                 <Link to={`/profile/${idUser}`}>
                    Profile              
                  </Link>

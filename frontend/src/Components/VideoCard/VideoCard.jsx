@@ -23,7 +23,7 @@ function VideoCard() {
             </div>
             <div class="data">
               <div class="content">
-              <h1 class="title"><a href="#">Stranger Things: The sound of the Upside Down</a></h1>
+              <h1 class="title"><a href="#"> The sound of the Upside Down</a></h1>
                 <a href="#" class="button">Watch Now</a>
               </div>
             </div>
@@ -47,7 +47,7 @@ function VideoCard() {
             </div>
             <div class="data">
               <div class="content">
-              <h1 class="title"><a href="#">Stranger Things: The sound of the Upside Down</a></h1>
+              <h1 class="title"><a href="#"> The sound of the Upside Down</a></h1>
                 <a href="#" class="button">Watch Now</a>
               </div>
             </div>
@@ -71,7 +71,7 @@ function VideoCard() {
             </div>
             <div class="data">
               <div class="content">
-              <h1 class="title"><a href="#">Stranger Things: The sound of the Upside Down</a></h1>
+              <h1 class="title"><a href="#">The sound of the Upside Down</a></h1>
                 <a href="#" class="button">Watch Now</a>
               </div>
             </div>
@@ -95,7 +95,7 @@ function VideoCard() {
             </div>
             <div class="data">
               <div class="content">
-              <h1 class="title"><a href="#">Stranger Things: The sound of the Upside Down</a></h1>
+              <h1 class="title"><a href="#">The sound of the Upside Down</a></h1>
                 <a href="#" class="button">Watch Now</a>
               </div>
             </div>
