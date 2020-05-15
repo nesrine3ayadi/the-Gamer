@@ -68,7 +68,7 @@ body {
   .clash-card__image--archer {
     background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/archer-bg.jpg');
     img {
-      width: 400px;
+      width: 350px;
       position: absolute;    
       top: -34px;
       left: -37px;
@@ -137,6 +137,7 @@ body {
     color: black;
     font-weight: 900;
     margin-bottom: 5px;
+    padding-top: 30px;
   }
   
   .clash-card__unit-description {
@@ -238,4 +239,7 @@ body {
   .slick-next {
     right: 100px;
     z-index: 999;
+  }
+  .joinCard {
+    cursor: pointer;
   }

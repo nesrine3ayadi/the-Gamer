@@ -14,6 +14,7 @@ import {
   FormHelperText,
 } from "@material-ui/core";
 import Navbar from "../Navbar/navbar";
+import Chat from "../Chat/Chat";
 
 
 const Profile = (props) => {
@@ -69,7 +70,7 @@ const Profile = (props) => {
   <Navbar />
   
     <div className="row">
-      {console.log("this is current user " + props.currentUser.username)}
+      
    
       <div className="single-channel-page col-md-9" id="content-wrapper" >
         <div className="single-channel-image" style={{height:"300px", overflow:"hidden" }}>
@@ -177,7 +178,7 @@ const Profile = (props) => {
         
       </div>
       <div className="col-md-3">
-        
+        <Chat />
         
       </div>
     </div>
