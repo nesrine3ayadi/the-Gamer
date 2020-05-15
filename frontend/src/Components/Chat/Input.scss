@@ -2,7 +2,24 @@
     display: flex;
     border-top: 2px solid #D3D3D3;
   }
-  
+  .type_msg {
+    background-color: rgba(0,0,0,0.3) !important;
+    border: 0 !important;
+    color: white !important;
+    height: 60px !important;
+    overflow-y: auto;
+}
+.card-footer {
+  border-radius: 0 0 15px 15px !important;
+  border-top: 0 !important;
+}
+.send_btn {
+  border-radius: 0 15px 15px 0 !important;
+  background-color: rgba(0,0,0,0.3) !important;
+  border: 0 !important;
+  color: white !important;
+  cursor: pointer;
+}
   .input {
     border: none;
     border-radius: 0;

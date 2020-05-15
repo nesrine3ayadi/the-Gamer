@@ -72,7 +72,7 @@ const Profile = (props) => {
     <div className="row">
       
    
-      <div className="single-channel-page col-md-9" id="content-wrapper" >
+      <div className="single-channel-page col-md-8" id="content-wrapper" >
         <div className="single-channel-image" style={{height:"300px", overflow:"hidden" }}>
           <img className="img-fluid" alt="" src={coverImg} />
           <div className="channel-profile">
@@ -177,7 +177,7 @@ const Profile = (props) => {
         </Tabs>
         
       </div>
-      <div className="col-md-3">
+      <div className="col-md-4 col-sm-12 col-xs-12">
         <Chat idprofile={props.match.params.idUser} />
        
         

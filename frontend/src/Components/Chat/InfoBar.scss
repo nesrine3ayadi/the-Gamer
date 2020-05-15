@@ -1,13 +1,11 @@
-.infoBar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #2979FF;
-    border-radius: 4px 4px 0 0;
-    height: 60px;
-    width: 100%;
+.card-header {
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(0,0,0,.03);
   }
-  
+  .msg_head {
+    position: relative;
+}
   .leftInnerContainer {
     flex: 0.5;
     display: flex;

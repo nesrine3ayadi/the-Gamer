@@ -69,8 +69,8 @@ const Chat = (props) => {
   return (
     <div className="outerContainer">
       <div
-        className="container"
-        style={{ flexDirection: "column", background: "white" }}
+        className="container card"
+        style={{ flexDirection: "column", }}
       >
         <InfoBar room={room} />
         <Messages messages={messages} name={name} />
