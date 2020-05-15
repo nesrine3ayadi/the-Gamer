@@ -6,7 +6,7 @@ import Sidebar from "../Sidebar/sidebar";
 import { connect } from "react-redux";
 import Axios from "axios"
 import {displayUser} from "../../Actions/action"
-
+//
 function HomePage(props) {
   useEffect(()=>{
     async function getGamers()
