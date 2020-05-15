@@ -13,10 +13,10 @@ import "./Chat.scss";
 let socket;
 
 const Chat = (props) => {
-  const [name, setName] = useState("");
-  const [room, setRoom] = useState("");
-  const [users, setUsers] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState("myname");
+  const [room, setRoom] = useState("room");
+  const [users, setUsers] = useState([{name:"firstname",room:"firstroom"}]);
+  const [message, setMessage] = useState("welcome you piece of shit");
   const [messages, setMessages] = useState([]);
   const ENDPOINT = "localhost:5001";
 
@@ -26,15 +26,16 @@ const Chat = (props) => {
         `http://localhost:5000/profile/${props.id}`
       );
       setRoom(response.data.username);
-      console.log("room : " + room);
-      setName(props.currentUser.username);
-      socket.emit("join", { name, room }, (error) => {
-        if (error) {
-          alert(error);
-        }
-      });
-    }
+     
+      setName(props.current.username);
+      }
     getUsers();
+    socket.emit("join", {name, room }, (error) => {
+      if (error) {
+        alert(error);
+      }
+    });
+  
   
   });
   

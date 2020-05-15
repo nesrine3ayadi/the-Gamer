@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Login.scss";
 import { withRouter } from "react-router-dom";
-
-
+import {connect } from "react-redux"
+import {displayCurrentUser} from "../../Actions/action"
 import Axios from "axios";
 
 function Login(props) {
@@ -18,6 +18,7 @@ function Login(props) {
       .then(res => {
         localStorage.setItem("token", res.data.token);
         props.history.push("/home");
+        displayCurrentUser(res.data.token)
       })
       .catch(err => {
         setMsg("** Please verify your login & password !!!");
