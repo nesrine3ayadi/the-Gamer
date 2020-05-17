@@ -32,6 +32,9 @@ function Navbar(props) {
     }
   }, [username]);
   return (
+    <React.Fragment>
+
+   
     <nav className="navbar navbar-expand navbar-light  static-top osahan-nav ">
       <a className="navbar-brand mr-1" href="/home">
         <img className="img-fluid logo" width="100" alt="" src={logo} />
@@ -80,6 +83,7 @@ function Navbar(props) {
                 <Dropdown.Item href="/home" onClick={() => localStorage.removeItem("token")}>Logout</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
+            
           ) : (
             <a className="btn_1" href="/login">
               Sign In
@@ -88,6 +92,7 @@ function Navbar(props) {
         </li>
       </ul>
     </nav>
+    </React.Fragment>
   );
 }
 const mapStateToProps = (state) => ({ connected: state.connectedUser });

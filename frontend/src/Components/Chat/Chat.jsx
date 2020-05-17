@@ -15,6 +15,7 @@ let socket;
 const Chat = (props) => {
   const [name, setName] = useState('visitor'+Date.now());
   const [room, setRoom] = useState('room');
+  const [img, setImg] = useState('img');
   const [users, setUsers] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
@@ -26,6 +27,7 @@ const Chat = (props) => {
         `http://localhost:5000/profile/${props.idprofile}`
       );
        setRoom(response.data.username)
+      
       }
     
     getUsers();
@@ -35,10 +37,11 @@ const Chat = (props) => {
     if (token !== null) {
       var decoded = jwt_decode(token);
       setName(decoded.username)
+      setImg(decoded.imageUser)
     }
     
     socket = io(ENDPOINT);
-    socket.emit("join", {name, room }, (error) => {
+    socket.emit("join", {name, room, img }, (error) => {
       if (error) {
         alert(error);
       }
@@ -73,7 +76,8 @@ const Chat = (props) => {
         style={{ flexDirection: "column", }}
       >
         <InfoBar room={room} />
-        <Messages messages={messages} name={name} />
+        <Messages messages={messages} name={name}  img={img}/>
+        {console.log(messages)}
         <Input
           message={message}
           setMessage={setMessage}

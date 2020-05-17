@@ -7,24 +7,14 @@ import { useState, useEffect } from "react";
 
 
 
-const Message = ({ message: { text, user }, name }) => {
-  const [img, setImg] = useState("") 
-
-  useEffect(() => {
-
-    var token = localStorage.getItem("token");
-    if (token !== null) {
-      var decoded = jwt_decode(token);
-      setImg(decoded.imageUser);
-      console.log("user img : " + img);
-    }
-  },[]);
+const Message = ({ message: { text, user, img}, name }) => {
+ 
   
   let isSentByCurrentUser = false;
 
   const trimmedName = name.trim().toLowerCase();
 
-  if (user === trimmedName) {
+  if (user === trimmedName ) {
     isSentByCurrentUser = true;
   }
 
@@ -47,7 +37,7 @@ const Message = ({ message: { text, user }, name }) => {
       </div>
     </div>
   ) : (
-    <div className="d-flex justify-content-start mb-4">
+    <div className="d-flex justify-content-start mb-4 reciver">
       <div class="img_cont_msg">
         <img
           src={img}
