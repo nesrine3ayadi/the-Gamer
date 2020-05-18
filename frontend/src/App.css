@@ -28,9 +28,10 @@ html {
     position: relative;
     min-height: 100%;
 }
+a.item{color: white !important;}
 body {
       background-image: url('./img/bodybg.png') !important; 
-    color: #888;
+    color: white !important;
     font-size: 13px;
     height: 100%;
     overflow-x: hidden;

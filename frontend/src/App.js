@@ -16,15 +16,17 @@ import StreamDelete from "./Components/LiveStreaming/ShowStreaming"
 import StreamEdit  from "./Components/LiveStreaming/ShowStreaming"
 import StreamList  from "./Components/LiveStreaming/ShowStreaming"
 import Header from "./Components/LiveStreaming/Header"
-import { Switch } from "react-router-dom";
+import { Switch, Router } from "react-router-dom";
+import history from "./History"
 
 
   
 function App(props) {
   return (
     <div className="App">
-     
-      <Switch >
+      <Router history={history}>
+        <Header/>
+      <Switch  >
       <Route exact path="/register" component={Register}></Route>
       <Route exact path="/login" component={Login}></Route>
       <Route exact path="/home" component={HomePage}></Route>
@@ -33,14 +35,14 @@ function App(props) {
       <Route path="/chat" component={Chat}></Route>
       <Route path="/editProfile/:idUser" component={EditProfile}></Route>
 
-      <Route path = "/streams" exact component ={Header}/>
-      <Route path="/streams/list" exact component={StreamList} />
+     
+      <Route path="/" exact component={StreamList} />
       <Route path="/streams/new" exact component={StreamCreate} />
       <Route path="/streams/edit/:id" exact component={StreamEdit} />
       <Route path="/streams/delete/:id" exact component={StreamDelete} />
       <Route path="/streams/:id" exact component={StreamShow} />
       </Switch>
-    
+      </Router>
     </div>
   );
 }

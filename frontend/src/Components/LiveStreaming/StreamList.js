@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchStreams } from '../../actions';
+import { fetchStreams } from '../../Actions/action';
 
 class StreamList extends React.Component {
     componentDidMount() {

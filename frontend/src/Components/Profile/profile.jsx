@@ -16,6 +16,8 @@ import {
 import Navbar from "../Navbar/navbar";
 import Chat from "../Chat/Chat";
 import VideoCard from "../VideoCard/VideoCard";
+import StreamForm from "../LiveStreaming/StreamForm";
+import StreamCreate from "../LiveStreaming/StreamCreate";
 
 
 const Profile = (props) => {
@@ -79,8 +81,8 @@ const Profile = (props) => {
           </div>
         </div>
         <Tabs defaultActiveKey="videos" id="uncontrolled-tab-example">
-          <Tab eventKey="editProfile" title="Stream">
-        
+          <Tab eventKey="Stream" title="Stream">
+            <StreamCreate/>
           </Tab>
           <Tab eventKey="videos" title="Videos">
                <VideoCard/>
