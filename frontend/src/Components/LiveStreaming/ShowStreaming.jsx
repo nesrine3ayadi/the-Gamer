@@ -48,9 +48,9 @@ class StreamShow extends React.Component {
 
         return (
             <div>
-                <Player ref={this.videoRef} style={{ width: '100%' }} controls={true} />
-                <h1>hhaha   </h1>
-                <h5>hhh</h5>
+                <video ref={this.videoRef} style={{ width: '100%' }} controls={true} />
+                <h1>{this.props.stream.title}</h1>
+                <h5>{this.props.stream.description}</h5>
             </div>
         );
     }
