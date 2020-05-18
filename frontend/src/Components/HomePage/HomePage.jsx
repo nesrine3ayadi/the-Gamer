@@ -71,6 +71,6 @@ function HomePage(props) {
   );
 }
 const mapStatetoProps = state => ({
-  users: state.users,
+  users: state.users.users,
 });
 export default connect(mapStatetoProps,{displayUser})(HomePage);
