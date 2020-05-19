@@ -22,7 +22,7 @@ class StreamList extends React.Component {
     renderList() {
         return this.props.streams.map(stream => {
             return (
-                <div className="item" key={stream.id}>
+                <div className="five wide column " key={stream.id}>
                     {this.renderAdmin(stream)}
                     <i className="large middle aligned icon video" />
                     <div className="content">
@@ -42,9 +42,9 @@ class StreamList extends React.Component {
         if (this.props.isSignedIn) {
             return (
                 <div style={{ textAlign: 'right' }}>
-                    <Link to="/streams/new" className="ui button primary">
+                    {/* <Link to="/streams/new" className="ui button primary">
                         Create Stream
-                    </Link>
+                    </Link> */}
                 </div>
             );
         }
@@ -52,9 +52,9 @@ class StreamList extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="">
                 <h2>Streams</h2>
-                <div className="ui celled list">
+                <div className="ui grid">
                     {this.renderList()}
                 </div>
                 {this.renderCreate()}

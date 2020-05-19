@@ -1,6 +1,6 @@
 import streams from '../apis/Streams';
 import history from "../History"
-
+import jwt_decode from "jwt-decode";
 
 export const displayUser = (payload)=> {
     return {
@@ -28,15 +28,24 @@ export const signOut = () => {
         type: "SIGN_OUT"
     };
 };
+export const fetchStream = (id) => async dispach => {
+    const response = await streams.get('/streams/' + id);
+
+    dispach({ type: "FETCH_STREAM", payload: response.data });
+}
 
 export const createStream = formValues => async (dispach, getState) => {
-    const { userId } = getState().auth;
-    const response = await streams.post('/streams', { ...formValues, userId });
-
-    dispach({ type: "CREATE_STREAM", payload: response.data });
-
+    var token = localStorage.getItem("token");
+    console.log("toooken  " + token)
+      var decoded = jwt_decode(token);
+      console.log("decoded ! " + decoded.id)
     
-    history.push('/');
+    const  Id  = decoded.id;
+    const response = await streams.post('/streams', { ...formValues, Id });
+    const path = "/profile/" + Id
+    dispach({ type: "CREATE_STREAM", payload: response.data });
+    
+     history.push(path);
 };
 
 export const fetchStreams = () => async dispach => {
@@ -45,11 +54,6 @@ export const fetchStreams = () => async dispach => {
     dispach({ type: "FETCH_STREAMS", payload: response.data });
 };
 
-export const fetchStream = (id) => async dispach => {
-    const response = await streams.get('/streams/' + id);
-
-    dispach({ type: "FETCH_STREAM", payload: response.data });
-}
 
 export const editStream = (id, formValues) => async dispach => {
     const response = await streams.patch('/streams/' + id, formValues);

@@ -18,6 +18,7 @@ import Chat from "../Chat/Chat";
 import VideoCard from "../VideoCard/VideoCard";
 import StreamForm from "../LiveStreaming/StreamForm";
 import StreamCreate from "../LiveStreaming/StreamCreate";
+import StreamList from "../LiveStreaming/StreamList";
 
 
 const Profile = (props) => {
@@ -81,11 +82,13 @@ const Profile = (props) => {
           </div>
         </div>
         <Tabs defaultActiveKey="videos" id="uncontrolled-tab-example">
-          <Tab eventKey="Stream" title="Stream">
+          <Tab eventKey="Stream" title="Stream" className="streamtab">
+            
             <StreamCreate/>
+
           </Tab>
-          <Tab eventKey="videos" title="Videos">
-               <VideoCard/>
+          <Tab eventKey="videos" title="Videos" className="streamtab">
+              <StreamList />
           </Tab>
           <Tab eventKey="donate" title="Donate" >
               Donate
