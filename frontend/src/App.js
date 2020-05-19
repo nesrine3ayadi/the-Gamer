@@ -11,21 +11,21 @@ import Join from "./Components/Chat/Join";
 import Chat from "./Components/Chat/Chat";
 import EditProfile from "./Components/Edit Prolfile/EditProfile";
 import StreamShow from "./Components/LiveStreaming/ShowStreaming";
-import StreamCreate from "./Components/LiveStreaming/ShowStreaming"
-import StreamDelete from "./Components/LiveStreaming/ShowStreaming"
-import StreamEdit  from "./Components/LiveStreaming/ShowStreaming"
-import StreamList  from "./Components/LiveStreaming/ShowStreaming"
+import StreamCreate from "./Components/LiveStreaming/StreamCreate"
+import StreamDelete from "./Components/LiveStreaming/StreamDelete"
+import StreamEdit  from "./Components/LiveStreaming/StreamEdit"
+import StreamList  from "./Components/LiveStreaming/StreamList"
 import Header from "./Components/LiveStreaming/Header"
 import { Switch, Router } from "react-router-dom";
 import history from "./History"
 
 
   
-function App(props) {
+function App() {
   return (
     <div className="App">
       <Router history={history}>
-        <Header/>
+      <Header/>
       <Switch  >
       <Route exact path="/register" component={Register}></Route>
       <Route exact path="/login" component={Login}></Route>
@@ -35,7 +35,6 @@ function App(props) {
       <Route path="/chat" component={Chat}></Route>
       <Route path="/editProfile/:idUser" component={EditProfile}></Route>
 
-     
       <Route path="/" exact component={StreamList} />
       <Route path="/streams/new" exact component={StreamCreate} />
       <Route path="/streams/edit/:id" exact component={StreamEdit} />

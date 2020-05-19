@@ -1,5 +1,7 @@
 import streams from '../apis/Streams';
 import history from "../History"
+
+
 export const displayUser = (payload)=> {
     return {
         type: "DISPLAY_USER",
@@ -13,6 +15,7 @@ export const displayCurrentUser = (payload)=> {
         payload
     }
 }
+
 export const signIn = (userId) => {
     return {
         type: "SIGN_IN",
@@ -32,7 +35,7 @@ export const createStream = formValues => async (dispach, getState) => {
 
     dispach({ type: "CREATE_STREAM", payload: response.data });
 
-    //programatic navitation after creating stream
+    
     history.push('/');
 };
 
@@ -53,7 +56,7 @@ export const editStream = (id, formValues) => async dispach => {
 
     dispach({ type: "EDIT_STREAM", payload: response.data });
 
-    //programatic navitation after creating stream
+    
     history.push('/');
 }
 
@@ -61,6 +64,6 @@ export const deleteStream = (id) => async dispach => {
     await streams.delete('/streams/' + id);
 
     dispach({ type: "DELETE_STREAM", payload: id });
-    //programatic navitation after creating stream
+    
     history.push('/');
 }
