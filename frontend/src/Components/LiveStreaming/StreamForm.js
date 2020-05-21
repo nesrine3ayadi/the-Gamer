@@ -31,21 +31,23 @@ class StreamForm extends React.Component {
 
     onSubmit = (formValues) => {
         this.props.onSubmit(formValues);
-        this.props.displayStream();
+        
     }
 
     render() {
         return (
-            <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
+         <div>
+
+       
                 <Field name="title" component={this.renderInput} label="Enter Title" />
                 <Field name="description" component={this.renderInput} label="Enter Description" />
                 <Link to="/profile/5ebc01336e8d73305c2e9832/100">
-                     <button className="ui button primary">Submit</button>
+                     <button onClick={() =>{ this.props.handleSubmit(this.onSubmit); this.props.displayStream(); }} className="ui button primary">Submit</button>
                 </Link>
                
-              
+                </div>
              
-            </form>
+           
         )
     }
 }
