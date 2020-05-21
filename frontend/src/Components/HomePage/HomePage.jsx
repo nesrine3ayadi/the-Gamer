@@ -7,8 +7,10 @@ import { connect } from "react-redux";
 import Axios from "axios"
 import {displayUser} from "../../Actions/action"
 import AllStreams from "../LiveStreaming/AllStreams";
+import { useState } from "react";
 //
 function HomePage(props) {
+   const [text, setText] = useState("")
   useEffect(()=>{
     async function getGamers()
     {
@@ -18,10 +20,16 @@ function HomePage(props) {
      getGamers()
  
    },[props.users])
- 
+
+   const filtredData = props.users.filter(e => e.username.toLowerCase().includes(text))
+  const  handleChange = (t) =>{
+      setText (t)
+      
+  }
   return (
     <Fragment>
-       <Navbar />
+       <Navbar handle={handleChange} />
+    
       <Sidebar />
       {/* <!-- banner part start--> */}
       <section className="banner_part">
@@ -57,8 +65,10 @@ function HomePage(props) {
               </div>
             </div>
           </div>
+
           <div className="row justify-content-center">
-            {props.users.map((user) => (
+            {
+           filtredData.map((user) => (
               <div key={user._id} className="col-lg-4 col-sm-12 text-center" style={{ marginBottom: "30px"}}>
                 <ChannelCard user={user} />
                

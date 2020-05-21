@@ -7,11 +7,13 @@ import "./navbar.scss";
 import {Link} from 'react-router-dom'
 import Axios from "axios"
 import {displayCurrentUser, signOut} from "../../Actions/action"
+import { Input, Menu } from 'semantic-ui-react'
 
 function Navbar(props) {
   const [username, setUserName] = useState("");
   const [imageUser, setUserImage] = useState("");
   const [idUser, setIdUser] = useState("");
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     var token = localStorage.getItem("token");
@@ -46,6 +48,7 @@ function Navbar(props) {
             type="text"
             className="form-control"
             placeholder="Search for..."
+            onChange={(e)=> props.handle(e.target.value)}
           />
           <div className="input-group-append">
             <button className="btn btn-light" type="button" id="mysearchbtn">
