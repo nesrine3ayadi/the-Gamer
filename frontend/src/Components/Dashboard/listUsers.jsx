@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,6 +7,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Axios from "axios"
+import {displayUser} from "../../Actions/action"
+import {connect} from "react-redux"
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles({
   table: {
@@ -26,7 +30,16 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-export default function ListUsers() {
+ function ListUsers(props) {
+  useEffect(()=>{
+    async function getGamers()
+    {
+     const response = await Axios.get("http://localhost:5000/");
+     props.displayUser(response.data)
+    } 
+     getGamers()
+  
+   },[props.users])
   const classes = useStyles();
 
   return (
@@ -41,13 +54,13 @@ export default function ListUsers() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {props.users.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.username}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
+              <TableCell align="right">{row.email}</TableCell>
+              <TableCell align="right"><Button variant="danger" style={{"color":"white","backgroundColor":"red"}}>Disable</Button></TableCell>
             
             </TableRow>
           ))}
@@ -56,3 +69,7 @@ export default function ListUsers() {
     </TableContainer>
   );
 }
+const mapStatetoProps = state => ({
+  users: state.users.users,
+});
+export default  connect(mapStatetoProps,{displayUser})(ListUsers)
