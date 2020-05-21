@@ -36,18 +36,26 @@ export const fetchStream = (id) => async dispach => {
 
 export const createStream = formValues => async (dispach, getState) => {
     var token = localStorage.getItem("token");
-    console.log("toooken  " + token)
+    
       var decoded = jwt_decode(token);
-      console.log("decoded ! " + decoded.id)
+   
     
     const  Id  = decoded.id;
     const response = await streams.post('/streams', { ...formValues, Id });
-    const path = "/profile/" + Id
+   
     dispach({ type: "CREATE_STREAM", payload: response.data });
-    
+    const path = "/profile/" + Id + "/" + response.data.id   
      history.push(path);
 };
+// export const createStream = formValues => async (dispach, getState) => {
+//     const { userId } = getState().auth;
+//     const response = await streams.post('/streams', { ...formValues, userId });
 
+//     dispach({ type: CREATE_STREAM, payload: response.data });
+
+//     //programatic navitation after creating stream
+//     history.push('/');
+// };
 export const fetchStreams = () => async dispach => {
     const response = await streams.get('/streams');
 

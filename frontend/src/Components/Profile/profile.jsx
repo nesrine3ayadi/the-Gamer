@@ -19,6 +19,7 @@ import VideoCard from "../VideoCard/VideoCard";
 import StreamForm from "../LiveStreaming/StreamForm";
 import StreamCreate from "../LiveStreaming/StreamCreate";
 import StreamList from "../LiveStreaming/StreamList";
+import ShowStreaming from "../LiveStreaming/ShowStreaming";
 
 
 const Profile = (props) => {
@@ -85,7 +86,8 @@ const Profile = (props) => {
           <Tab eventKey="Stream" title="Stream" className="streamtab">
             
             <StreamCreate/>
-
+            {(props.match.params.id ) && (  <ShowStreaming />)}
+           
           </Tab>
           <Tab eventKey="videos" title="Videos" className="streamtab">
               <StreamList />

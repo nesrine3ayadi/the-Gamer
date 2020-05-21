@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "./Login.scss";
 import { withRouter } from "react-router-dom";
 import Axios from "axios";
+import { connect } from 'react-redux'
+import { signIn } from '../../Actions/action'
+import jwt_decode from "jwt-decode";
 
 function Login(props) {
   
@@ -15,6 +18,10 @@ function Login(props) {
       .post("http://localhost:5000/login", { email,password })
       .then(res => {
         localStorage.setItem("token", res.data.token);
+        
+        var token = localStorage.getItem("token");
+        var decoded = jwt_decode(token);
+        console.log(decoded.id);
         props.history.push("/home");
         // props.displayCurrentUser(res.data.token)
       })
