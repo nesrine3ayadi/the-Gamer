@@ -94,7 +94,8 @@ const useStyles = makeStyles((theme) => ({
     };
 
   return (
-    <Container component="main" maxWidth="xs">
+      <div id="register" >
+    <Container component="main" maxWidth="xs"  >
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -193,11 +194,11 @@ const useStyles = makeStyles((theme) => ({
         
           </Grid>
           <Button
-           
+            onClick={add}
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+           
           >
             Sign Up
           </Button>
@@ -214,6 +215,7 @@ const useStyles = makeStyles((theme) => ({
        
       </Box>
     </Container>
+    </div>
   );
 }
 export default withRouter(Register2);

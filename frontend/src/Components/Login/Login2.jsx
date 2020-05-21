@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   const [password, setPassword] = useState("");
   const [Msg, setMsg] = useState("");
 
-  const loginUser = (e) => {
+  const loginUser = () => {
 
     Axios
       .post("http://localhost:5000/login", { email,password })
@@ -117,8 +117,7 @@ const useStyles = makeStyles((theme) => ({
               onChange={(e) =>
                 setEmail(e.target.value)
               }
-              onChange={(e) =>
-                setPassword(e.target.value)}
+            
             />
             <TextField
               variant="outlined"
@@ -130,18 +129,19 @@ const useStyles = makeStyles((theme) => ({
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e) =>
+                setPassword(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
             <Button
-              type="submit"
+            
               fullWidth
               variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={()=>loginUser()}
+              color="primary"           
+              onClick={loginUser}
             >
               Sign In
             </Button>

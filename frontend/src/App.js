@@ -16,9 +16,9 @@ import StreamDelete from "./Components/LiveStreaming/StreamDelete"
 import StreamEdit  from "./Components/LiveStreaming/StreamEdit"
 import StreamList  from "./Components/LiveStreaming/StreamList"
 import Header from "./Components/LiveStreaming/Header"
-import { Switch, Router } from "react-router-dom";
+import { Switch, Router, Redirect } from "react-router-dom";
 import history from "./History"
-
+import Dashboard from './Components/Dashboard/dashboard'
 
   
 function App() {
@@ -27,8 +27,12 @@ function App() {
       <Router history={history}>
     
       <Switch  >
+     
+            
+   
       <Route exact path="/register" component={Register}></Route>
       <Route exact path="/login" component={Login2}></Route>
+    <Route exact path="/dashboard" component={Dashboard}></Route>
       <Route exact path="/home" component={HomePage}></Route>
       <Route  path="/profile/:idUser" component={Profile}></Route>
       <Route exact path="/join" component={Join}></Route>
