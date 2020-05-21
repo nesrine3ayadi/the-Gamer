@@ -84,10 +84,11 @@ const Profile = (props) => {
         </div>
         <Tabs defaultActiveKey="videos" id="uncontrolled-tab-example">
           <Tab eventKey="Stream" title="Stream" className="streamtab">
+           { (props.check) ?
+            (<ShowStreaming /> ) :
             
-            <StreamCreate/>
-            {(props.match.params.id ) && (  <ShowStreaming />)}
-           
+           (<StreamCreate/> )
+}
           </Tab>
           <Tab eventKey="videos" title="Videos" className="streamtab">
               <StreamList />
@@ -108,5 +109,7 @@ const Profile = (props) => {
     </Fragment>
   );
 };
-const mapStateToPops = (state) => ({ currentUser: state.currentUser });
-export default connect(mapStateToPops, { displayCurrentUser })(Profile);
+const mapStateToPops = (state) => ({ currentUser: state.currentUser, check: state.users.displayStream } 
+  
+  );
+export default connect(mapStateToPops, { displayCurrentUser  })(Profile);

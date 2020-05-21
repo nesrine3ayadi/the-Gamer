@@ -2,6 +2,9 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import './Stream.scss'
 import{ Link } from "react-router-dom"
+import { displayStream } from '../../Actions/action'
+import { connect } from 'react-redux'
+
 class StreamForm extends React.Component {
 
     renderError({ error, touched }) {
@@ -28,6 +31,7 @@ class StreamForm extends React.Component {
 
     onSubmit = (formValues) => {
         this.props.onSubmit(formValues);
+
     }
 
     render() {
@@ -60,4 +64,4 @@ const validate = (formValues) => {
 export default reduxForm({
     form: 'streamForm',
     validate
-})(StreamForm);
+})(connect(null, { displayStream }) (StreamForm));

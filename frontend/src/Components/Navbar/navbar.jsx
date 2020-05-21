@@ -6,7 +6,7 @@ import {Dropdown} from 'react-bootstrap'
 import "./navbar.scss";
 import {Link} from 'react-router-dom'
 import Axios from "axios"
-import {displayCurrentUser} from "../../Actions/action"
+import {displayCurrentUser, signOut} from "../../Actions/action"
 
 function Navbar(props) {
   const [username, setUserName] = useState("");
@@ -80,7 +80,7 @@ function Navbar(props) {
                 </Dropdown.Item>
                 <Dropdown.Item href="#/action-2">Notifications</Dropdown.Item>
                 <Dropdown.Item href={`/editProfile/${idUser}`}> Edit profile</Dropdown.Item>
-                <Dropdown.Item href="/home" onClick={() => localStorage.removeItem("token")}>Logout</Dropdown.Item>
+                <Dropdown.Item href="/home" onClick={() => { localStorage.removeItem("token"); signOut();}}  >Logout</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
             
@@ -96,4 +96,4 @@ function Navbar(props) {
   );
 }
 const mapStateToProps = (state) => ({ connected: state.connectedUser });
-export default connect(mapStateToProps,{displayCurrentUser})(Navbar);
+export default connect(mapStateToProps,{displayCurrentUser, signOut})(Navbar);

@@ -22,6 +22,7 @@ function Login(props) {
         var token = localStorage.getItem("token");
         var decoded = jwt_decode(token);
         console.log(decoded.id);
+        props.signIn(decoded.id)
         props.history.push("/home");
         // props.displayCurrentUser(res.data.token)
       })
@@ -94,4 +95,4 @@ function Login(props) {
   );
 }
 
-export default withRouter(Login);
+export default  withRouter(connect(null, { signIn }) (Login )  );

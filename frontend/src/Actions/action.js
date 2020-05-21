@@ -9,6 +9,13 @@ export const displayUser = (payload)=> {
     }
 }
 
+export const displayStream = ()=> {
+    return {
+        type: "DISPLAY_STREAM",
+      
+    }
+}
+
 export const displayCurrentUser = (payload)=> {
     return {
         type: "DISPLAY_CURRENT_USER",

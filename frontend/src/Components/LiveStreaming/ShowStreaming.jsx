@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchStream } from '../../Actions/action';
 import { Player } from 'video-react';
 
+
 class StreamShow extends React.Component {
     constructor(props) {
         super(props);
