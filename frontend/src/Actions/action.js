@@ -68,6 +68,11 @@ export const fetchStreams = () => async dispach => {
 
     dispach({ type: "FETCH_STREAMS", payload: response.data });
 };
+export const listStreams = () => async dispach => {
+    const response = await streams.get('/streams');
+
+    dispach({ type: "LIST_STREAMS", payload: response.data });
+};
 
 
 export const editStream = (id, formValues) => async dispach => {

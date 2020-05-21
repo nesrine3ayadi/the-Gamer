@@ -6,6 +6,7 @@ import Sidebar from "../Sidebar/sidebar";
 import { connect } from "react-redux";
 import Axios from "axios"
 import {displayUser} from "../../Actions/action"
+import AllStreams from "../LiveStreaming/AllStreams";
 //
 function HomePage(props) {
   useEffect(()=>{
@@ -65,6 +66,9 @@ function HomePage(props) {
             ))}
           </div>
         </div>
+      </section>
+      <section className="pricing_part padding_top">
+        <AllStreams />
       </section>
       {/* <!-- pricing part end--> */}
     </Fragment>
