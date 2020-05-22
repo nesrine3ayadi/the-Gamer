@@ -21,9 +21,9 @@ function Login(props) {
         
         var token = localStorage.getItem("token");
         var decoded = jwt_decode(token);
-        console.log(decoded.id);
+        console.log(decoded.role);
         props.signIn(decoded.id)
-        (decoded.id==="5ec7130f459bfb2b7c0e3919") ?
+        (decoded.role==="admin") ?
         props.history.push("/dashboard") :
         props.history.push("/home");
         // props.displayCurrentUser(res.data.token)
@@ -84,7 +84,7 @@ function Login(props) {
               <div >
                       <button className = "btn btn-signin" onClick={()=>loginUser()}>submit</button> 
               </div>
-           
+                  
             <div className="links">
               {/* <a href="#">Privacy Policy</a>
               <a href="#">Terms & Conditions</a> */}

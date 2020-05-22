@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { listStreams } from '../../Actions/action';
-
+import StreamVideoCard from './StreamVideoCard'
 class AllStreams extends React.Component {
     componentDidMount() {
         this.props.listStreams();
@@ -24,14 +24,13 @@ class AllStreams extends React.Component {
             return (
                 <div className="five wide column " key={stream.id}>
                     {this.renderAdmin(stream)}
-                    <i className="large middle aligned icon video" />
+                    {/* <i className="large middle aligned icon video" /> */}
                     <div className="content">
                         <Link to={'/streams/' + stream.id} className="header">
-                            {stream.title}
+                           <StreamVideoCard title={stream.title} description={stream.description} />
                         </Link>
-                        <div className="description">
-                            {stream.description}
-                        </div>
+                    
+                        
                     </div>
                 </div>
             );
@@ -53,7 +52,7 @@ class AllStreams extends React.Component {
     render() {
         return (
             <div className="">
-                <h2>Streams</h2>
+                <h2>Last Streams</h2>
                 <div className="ui grid">
                     {this.renderList()}
                 </div>

@@ -80,9 +80,8 @@ const useStyles = makeStyles((theme) => ({
         
         var token = localStorage.getItem("token");
         var decoded = jwt_decode(token);
-        console.log(decoded.id);
-       
-        (decoded.id ==="5ec7130f459bfb2b7c0e3919")?
+             
+        (decoded.role ==="admin")?
          ( props.signIn(decoded.id) &&
          props.history.push("/dashboard")):
          ( props.signIn(decoded.id) &&
@@ -163,7 +162,7 @@ const useStyles = makeStyles((theme) => ({
               </Grid>
             </Grid>
             <Box mt={5}>
-              <Copyright />
+             <div class="msg">{Msg} </div> 
             </Box>
           </form>
         </div>

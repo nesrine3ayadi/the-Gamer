@@ -45,7 +45,7 @@ const UserSchema = new Schema({
   },
   activate: {
     type: Boolean,
-    required: false
+    required: true
   },
   banned : {
     type: Boolean,

@@ -104,6 +104,7 @@ router.post("/login", (req, res) => {
   const { email, password } = req.body;
   User.findOne({ email }).then((user) => {
     if (!user) res.sendStatus(409);
+    else if (user.activate === false) res.sendStatus(409)
     else {
       bcrypt
         .compare(password, user.password)
@@ -119,6 +120,7 @@ router.post("/login", (req, res) => {
               aboutUser: user.aboutUser,
               country: user.country,
               createdAt: user.createdAt,
+              role: user.role
             };
             jwt.sign(payload, "session", { expiresIn: 3600 }, (err, token) => {
               if (err) res.sendStatus(500);
@@ -202,6 +204,26 @@ router.get("/editProfile/:_id", (req, res) => {
 router.get("/", (req, res) => {
   res.send({ response: "Server is up and running." }).status(200);
 });
+
+// Disable user 
+router.put("/disable/:_id",(req, res, next) => {
+  const { _id } = req.params;
+  
+  User.findOneAndUpdate(
+    { _id },
+    {
+      $set: {
+        activate: "false"
+      },
+    }
+  ).then(user=>res.json(user))
+  .catch(err=> console.log(err))
+    
+  
+});
+
+
+
 
 
 module.exports = router;

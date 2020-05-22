@@ -31,7 +31,7 @@ function App() {
           
           <Route exact path="/dashboard" component={Dashboard}></Route>
           <Route exact path="/home" component={HomePage}></Route>
-          <Route path="/profile/:idUser" component={Profile}></Route>
+          <Route exact path="/profile/:idUser" component={Profile}></Route>
           <Route exact path="/join" component={Join}></Route>
           <Route path="/chat" component={Chat}></Route>
           <Route path="/editProfile/:idUser" component={EditProfile}></Route>
@@ -40,7 +40,7 @@ function App() {
           <Route path="/streams/new" exact component={StreamCreate} />
           <Route path="/streams/edit/:id" exact component={StreamEdit} />
           <Route path="/streams/delete/:id" exact component={StreamDelete} />
-          {/* <Route exact path="/profile/:idUser/:id"  component={StreamShow} /> */}
+           <Route exact path="/profile/:idUser/:id"  component={StreamShow} /> 
         </Switch>
       </Router>
     </div>
