@@ -7,10 +7,17 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+
 import './Dashboard.scss'
 import ListUsers from './listUsers';
 import logo from '../../img/logo.png'
 import Axios from "axios"
+import AdminBar from './adminBar';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -20,6 +27,12 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     marginRight: theme.spacing(2),
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
   },
 }));
 
@@ -58,21 +71,11 @@ export default function Dashboard() {
   }, [open]);
 
   return (
-    <div className={classes.root}>
-
-      <Paper className={classes.paper}>
-        
-        
-        <MenuList className="leftMenu">
-          <MenuItem>Admin</MenuItem>
-          <MenuItem>Users</MenuItem>
-          <MenuItem>Logout</MenuItem>
-        </MenuList>
-      </Paper>
-      <div>
+    <div className="container">
+             <AdminBar />
         <ListUsers />
       
-      </div>
+     
     </div>
   );
 }

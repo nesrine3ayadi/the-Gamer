@@ -23,6 +23,8 @@ function Login(props) {
         var decoded = jwt_decode(token);
         console.log(decoded.id);
         props.signIn(decoded.id)
+        (decoded.id==="5ec7130f459bfb2b7c0e3919") ?
+        props.history.push("/dashboard") :
         props.history.push("/home");
         // props.displayCurrentUser(res.data.token)
       })

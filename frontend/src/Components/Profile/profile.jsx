@@ -13,7 +13,7 @@ import {
   InputLabel,
   FormHelperText,
 } from "@material-ui/core";
-import Navbar from "../Navbar/navbar";
+import Navbar from "../Navbar/navbar2";
 import Chat from "../Chat/Chat";
 import VideoCard from "../VideoCard/VideoCard";
 import StreamForm from "../LiveStreaming/StreamForm";

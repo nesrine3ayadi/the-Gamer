@@ -1,7 +1,13 @@
 #sidebarToggle {
   width: 30px;
 }
+a.dropdown-item {
+  color: black !important;
+}
 
+.dropdown-menu.show a {
+  color: black !important;
+}
 #mysearchbtn {
   margin: 0 !important;
   background: transparent;

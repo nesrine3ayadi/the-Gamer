@@ -11,41 +11,37 @@ import Join from "./Components/Chat/Join";
 import Chat from "./Components/Chat/Chat";
 import EditProfile from "./Components/Edit Prolfile/EditProfile";
 import StreamShow from "./Components/LiveStreaming/ShowStreaming";
-import StreamCreate from "./Components/LiveStreaming/StreamCreate"
-import StreamDelete from "./Components/LiveStreaming/StreamDelete"
-import StreamEdit  from "./Components/LiveStreaming/StreamEdit"
-import StreamList  from "./Components/LiveStreaming/StreamList"
-import Header from "./Components/LiveStreaming/Header"
+import StreamCreate from "./Components/LiveStreaming/StreamCreate";
+import StreamDelete from "./Components/LiveStreaming/StreamDelete";
+import StreamEdit from "./Components/LiveStreaming/StreamEdit";
+import StreamList from "./Components/LiveStreaming/StreamList";
+import Header from "./Components/LiveStreaming/Header";
 import { Switch, Router, Redirect } from "react-router-dom";
-import history from "./History"
-import Dashboard from './Components/Dashboard/dashboard'
+import history from "./History";
+import Dashboard from "./Components/Dashboard/dashboard";
 
-  
 function App() {
   return (
     <div className="App">
       <Router history={history}>
-    
-      <Switch  >
-     
-            
-   
-      <Route exact path="/register" component={Register}></Route>
-      <Route exact path="/login" component={Login2}></Route>
-    <Route exact path="/dashboard" component={Dashboard}></Route>
-      <Route exact path="/home" component={HomePage}></Route>
-      <Route  path="/profile/:idUser" component={Profile}></Route>
-      <Route exact path="/join" component={Join}></Route>
-      <Route path="/chat" component={Chat}></Route>
-      <Route path="/editProfile/:idUser" component={EditProfile}></Route>
+        <Switch>
+          <Route exact path="/register" component={Register}></Route>
 
-      <Route path="/" exact component={StreamList} />
-      <Route path="/streams/new" exact component={StreamCreate} />
-      <Route path="/streams/edit/:id" exact component={StreamEdit} />
-      <Route path="/streams/delete/:id" exact component={StreamDelete} />
-      {/* <Route exact path="/profile/:idUser/:id"  component={StreamShow} /> */}
-     
-      </Switch>
+          <Route exact path="/login" component={Login2}></Route>
+          
+          <Route exact path="/dashboard" component={Dashboard}></Route>
+          <Route exact path="/home" component={HomePage}></Route>
+          <Route path="/profile/:idUser" component={Profile}></Route>
+          <Route exact path="/join" component={Join}></Route>
+          <Route path="/chat" component={Chat}></Route>
+          <Route path="/editProfile/:idUser" component={EditProfile}></Route>
+
+          <Route path="/" exact component={StreamList} />
+          <Route path="/streams/new" exact component={StreamCreate} />
+          <Route path="/streams/edit/:id" exact component={StreamEdit} />
+          <Route path="/streams/delete/:id" exact component={StreamDelete} />
+          {/* <Route exact path="/profile/:idUser/:id"  component={StreamShow} /> */}
+        </Switch>
       </Router>
     </div>
   );

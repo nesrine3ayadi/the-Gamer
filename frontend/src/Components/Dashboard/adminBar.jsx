@@ -1,6 +1,4 @@
-import React, { useState, useEffect} from 'react';
-import logo from "../../img/logo.png";
-import { connect } from "react-redux";
+import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,10 +14,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import Axios from "axios"
-import {displayCurrentUser, signOut} from "../../Actions/action"
-import jwt_decode from "jwt-decode";
-import {Link} from 'react-router-dom'
+import { signOut} from "../../Actions/action"
+import { connect } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -85,31 +81,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
- function Navbar2(props) {
-  const [username, setUserName] = useState("");
-  const [imageUser, setUserImage] = useState("");
-  const [idUser, setIdUser] = useState("");
-  const [search, setSearch] = useState("")
-
-  useEffect(() => {
-    var token = localStorage.getItem("token");
-    if (token !== null) {
-      var decoded = jwt_decode(token);
-      
-      setIdUser(decoded.id)
-      async function getUser() {
-        const response = await Axios.get(
-          `http://localhost:5000/profile/${decoded.id}`
-        );
-        setUserName(response.data.username);
-        setUserImage(response.data.imageUser);
-        props.displayCurrentUser(response.data)
-      }
-      getUser();
-
-    }
-  }, [username]);
-
+ function AdminBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -146,11 +118,7 @@ const useStyles = makeStyles((theme) => ({
       onClose={handleMenuClose}
     >
       
-      <MenuItem onClick={handleMenuClose}> <a href={`/editProfile/${idUser}`}> Edit profile</a></MenuItem>
-      <Link to={`/profile/${idUser}`}>
-                             
-                <MenuItem onClick={handleMenuClose}>My account</MenuItem> </Link>
-      <MenuItem>  <a href="/home" onClick={() => { localStorage.removeItem("token"); signOut();}}  >Logout</a></MenuItem>
+      <MenuItem onClick={() => { localStorage.removeItem("token"); signOut();}}>Logout</MenuItem>
     </Menu>
   );
 
@@ -188,13 +156,13 @@ const useStyles = makeStyles((theme) => ({
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle /> 
+          <AccountCircle />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
     </Menu>
   );
-  
+
   return (
     <div className={classes.grow}>
       <AppBar position="static">
@@ -205,17 +173,16 @@ const useStyles = makeStyles((theme) => ({
             color="inherit"
             aria-label="open drawer"
           >
-           <img className="img-fluid logo" width="70" alt="" src={logo} />
+            <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            The Gamer
+            Welcome to dashboard
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
-             onChange={(e)=> props.handle(e.target.value)}
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
@@ -225,9 +192,13 @@ const useStyles = makeStyles((theme) => ({
             />
           </div>
           <div className={classes.grow} />
-          {localStorage.getItem("token") !== null ? (
           <div className={classes.sectionDesktop}>
-            
+           
+            <IconButton aria-label="show 17 new notifications" color="inherit">
+              <Badge badgeContent={17} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -236,12 +207,9 @@ const useStyles = makeStyles((theme) => ({
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-             <img alt="image" width="60px" src={imageUser} />
-                {username}
+              <AccountCircle />
             </IconButton>
-          </div> ) :
-           (  <a className="btn_1" href="/login">           Sign In            </a>)}
-
+          </div>
           <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
@@ -261,4 +229,4 @@ const useStyles = makeStyles((theme) => ({
   );
 }
 const mapStateToProps = (state) => ({ connected: state.connectedUser });
-export default connect(mapStateToProps,{displayCurrentUser, signOut})(Navbar2);
+export default connect(mapStateToProps,{signOut})(AdminBar);

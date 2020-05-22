@@ -8,7 +8,7 @@ import {
   InputLabel,
   FormHelperText,
 } from "@material-ui/core";
-import  Navbar  from '../Navbar/navbar';
+import  Navbar  from '../Navbar/navbar2';
 
 function EditProfile(props) {
   const [profileImg, setProfileImg] = useState("");

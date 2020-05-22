@@ -81,8 +81,13 @@ const useStyles = makeStyles((theme) => ({
         var token = localStorage.getItem("token");
         var decoded = jwt_decode(token);
         console.log(decoded.id);
-        props.signIn(decoded.id)
-        props.history.push("/home");
+       
+        (decoded.id ==="5ec7130f459bfb2b7c0e3919")?
+         ( props.signIn(decoded.id) &&
+         props.history.push("/dashboard")):
+         ( props.signIn(decoded.id) &&
+           props.history.push("/home"))
+
         // props.displayCurrentUser(res.data.token)
       })
       .catch(err => {

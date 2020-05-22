@@ -43,7 +43,9 @@ const rows = [
   const classes = useStyles();
 
   return (
+    
     <TableContainer component={Paper}>
+          <h2> All Users</h2>
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
@@ -60,7 +62,9 @@ const rows = [
                 {row.username}
               </TableCell>
               <TableCell align="right">{row.email}</TableCell>
-              <TableCell align="right"><Button variant="danger" style={{"color":"white","backgroundColor":"red"}}>Disable</Button></TableCell>
+              <TableCell align="right">
+                <Button variant="danger" style={{"color":"white","backgroundColor":"red"}}>Disable</Button>
+              </TableCell>
             
             </TableRow>
           ))}

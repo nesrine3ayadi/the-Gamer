@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import Navbar from "../Navbar/navbar";
+import Navbar from "../Navbar/navbar2";
 import ChannelCard from "../ChannelCard/ChannelCard";
 import "./HopePage.scss";
 import Sidebar from "../Sidebar/sidebar";
@@ -38,14 +38,12 @@ function HomePage(props) {
             <div className="col-lg-6 col-md-8">
               <div className="banner_text">
                 <div className="banner_text_iner">
-                  <h1>Best Highlights of the Latest</h1>
+                  <h1>Best Streaming Platform</h1>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Quis ipsum
+                   You can join Other gamers from all the world and share with them your stream
                   </p>
                   <a href="#" className="btn_1">
-                    Watch Tutorial
+                   Start Now
                   </a>
                 </div>
               </div>
@@ -56,7 +54,7 @@ function HomePage(props) {
       {/* Channels Categories */}
       
       {/* <!-- pricing part start--> */}
-      <section className="pricing_part padding_top">
+      <section className="pricing_part">
         <div className="">
           <div className="row justify-content-center">
             <div className="col-lg-6">
