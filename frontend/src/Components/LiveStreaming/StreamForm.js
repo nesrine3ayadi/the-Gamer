@@ -36,9 +36,9 @@ class StreamForm extends React.Component {
 
     render() {
         return (
-         <div>
+         <div className="streamForm">
 
-       
+                
                 <Field name="title" component={this.renderInput} label="Enter Title" />
                 <Field name="description" component={this.renderInput} label="Enter Description" />
                 <Link to="/profile/5ebc01336e8d73305c2e9832/100">

@@ -12,8 +12,8 @@ class AllStreams extends React.Component {
         if (stream.userId === this.props.currentUserId) {
             return (
                 <div className="right floated content">
-                    <Link to={'/streams/edit/' + stream.id} className="ui button primary">Edit</Link>
-                    <Link to={'/streams/delete/' + stream.id} className="ui button negative">Delete</Link>
+                    {/* <Link to={'/streams/edit/' + stream.id} className="ui button primary">Edit</Link>
+                    <Link to={'/streams/delete/' + stream.id} className="ui button negative">Delete</Link> */}
                 </div>
             );
         }
@@ -22,17 +22,19 @@ class AllStreams extends React.Component {
     renderList() {
         return this.props.streams.map(stream => {
             return (
+               
                 <div className="five wide column " key={stream.id}>
+                   
                     {this.renderAdmin(stream)}
                     {/* <i className="large middle aligned icon video" /> */}
                     <div className="content">
                         <Link to={'/streams/' + stream.id} className="header">
                            <StreamVideoCard title={stream.title} description={stream.description} />
                         </Link>
-                    
+                    </div>
                         
                     </div>
-                </div>
+                
             );
         });
     }
@@ -51,7 +53,7 @@ class AllStreams extends React.Component {
 
     render() {
         return (
-            <div className="">
+            <div className="container">
                 <h2>Last Streams</h2>
                 <div className="ui grid">
                     {this.renderList()}

@@ -64,7 +64,7 @@ export default function StreamVideoCard(props) {
       </div>
       <CardMedia
         className={classes.cover}
-        image="/static/images/cards/live-from-space.jpg"
+        image="https://image.winudf.com/v2/image/Y29tLndhbGxwYXBlcjRrLndhbGxwYXBlcnNoZC5nYW1pbmdfc2NyZWVuXzdfMTUxMTYwNDM0MV8wNDY/screen-7.jpg?fakeurl=1&type=.jpg"
         title="Live from space album cover"
       />
     </Card>

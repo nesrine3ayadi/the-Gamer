@@ -69,9 +69,9 @@ const rows = [
                 {row.username}
               </TableCell>
               <TableCell align="right">{row.email}</TableCell>
-              <TableCell align="right">
-                <Button onClick = {()=>handleDisable(row._id)}variant="danger" style={{"color":"white","backgroundColor":"red"}}>Disable</Button>
-                <Button onClikc={()=>handleEnable(row._id)} variant="info" style={{"color":"white","backgroundColor":"red"}}>Enable</Button>
+              <TableCell align="right" className="btn-table">
+                <Button onClick = {()=>handleDisable(row._id)} variant="danger" style={{"color":"white","backgroundColor":"red"}}>Disable</Button>
+                <Button onClick={()=>handleEnable(row._id)} variant="contained" className="info">Enable</Button>
               </TableCell>
             
             </TableRow>

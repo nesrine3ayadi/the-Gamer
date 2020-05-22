@@ -11,7 +11,20 @@
     background: transparent !important;
     border: 1px solid #9a383f !important;
     color: white !important;
+    height: 25px;
+    margin: 10px 0px;
 }
+.streamForm label {
+    /* margin-right: 15px; */
+    width: 125px;
+    font-size: 14px;
+}
+
+.streamForm.container button {
+    background: #b23737 !important;
+    margin: 10px 0px;
+}
+
 .form button {
     background-color: #9b383f !important;
 }
@@ -30,4 +43,11 @@
 
 .five.wide.column i {
     color: #9b383f;
+}
+h6.MuiTypography-root.MuiTypography-subtitle1.MuiTypography-colorTextSecondary {
+    color: white !important;
+}
+
+.makeStyles-controls-174 button {
+    color: white !important;
 }
