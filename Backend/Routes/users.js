@@ -208,12 +208,33 @@ router.get("/", (req, res) => {
 // Disable user 
 router.put("/disable/:_id",(req, res, next) => {
   const { _id } = req.params;
-  
+
+
+  // console.log(response)
+
   User.findOneAndUpdate(
     { _id },
     {
       $set: {
-        activate: "false"
+        activate: false
+      },
+    }
+  ).then(user=>res.json(user))
+  .catch(err=> console.log(err))
+    
+  
+});
+router.put("/enable/:_id",(req, res, next) => {
+  const { _id } = req.params;
+
+
+  // console.log(response)
+
+  User.findOneAndUpdate(
+    { _id },
+    {
+      $set: {
+        activate: true
       },
     }
   ).then(user=>res.json(user))

@@ -38,9 +38,16 @@ const rows = [
      props.displayUser(response.data)
     } 
      getGamers()
+     {console.log(props.users)}
   
    },[props.users])
   const classes = useStyles();
+  const handleEnable = (id)=>{
+    Axios.put(`http://localhost:5000/enable/${id}`)
+  }
+  const handleDisable = (id)=>{
+    Axios.put(`http://localhost:5000/disable/${id}`)
+  }
 
   return (
     
@@ -63,7 +70,8 @@ const rows = [
               </TableCell>
               <TableCell align="right">{row.email}</TableCell>
               <TableCell align="right">
-                <Button variant="danger" style={{"color":"white","backgroundColor":"red"}}>Disable</Button>
+                <Button onClick = {()=>handleDisable(row._id)}variant="danger" style={{"color":"white","backgroundColor":"red"}}>Disable</Button>
+                <Button onClikc={()=>handleEnable(row._id)} variant="info" style={{"color":"white","backgroundColor":"red"}}>Enable</Button>
               </TableCell>
             
             </TableRow>
