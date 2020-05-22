@@ -26,7 +26,7 @@ class StreamList extends React.Component {
                   
                     <i className="large middle aligned icon video" />
                     <div className="content">
-                        <Link to={'/streams/' + stream.id} className="header">
+                        <Link to={'/profile/'+ this.props.idUser + "/" + stream.id} className="header">
                             {stream.title}
                         </Link>
                         <div className="description">

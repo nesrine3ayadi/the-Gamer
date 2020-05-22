@@ -19,6 +19,7 @@ const Chat = (props) => {
   const [users, setUsers] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [id, setID] = useState("");
   const ENDPOINT = 'localhost:5001';
 
   useEffect(() => {
@@ -32,14 +33,16 @@ const Chat = (props) => {
     
     getUsers();
     // setName(props.current.username);
-    // setRoom("room")
+    setRoom("room")
     var token = localStorage.getItem("token");
     if (token !== null) {
       var decoded = jwt_decode(token);
       setName(decoded.username)
       setImg(decoded.imageUser)
+      setID(decoded.id)
     }
-    
+  
+   
     socket = io(ENDPOINT);
     socket.emit("join", {name, room, img }, (error) => {
       if (error) {
@@ -48,7 +51,8 @@ const Chat = (props) => {
     });
   
   
-  },[ENDPOINT,name, room]);
+  
+  },[id]);
   
 
   useEffect(() => {

@@ -63,7 +63,7 @@ class StreamShow extends React.Component {
             <h5>{this.props.stream.description}</h5>
           </div>
           <div className="col-md-4 col-sm-12">
-          <Chat />
+          <Chat  idprofile={this.props.match.params.idUser} />
           </div>
         </div>
       </div>   </div>

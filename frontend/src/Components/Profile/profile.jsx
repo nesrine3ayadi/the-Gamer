@@ -30,6 +30,7 @@ const Profile = (props) => {
   const [password, setPassword] = useState("");
   const [aboutUser, setAboutUser] = useState("");
   const [country, setCountry] = useState("");
+  const [id, setID] = useState("");
   //
   useEffect(() => {
     async function getUser() {
@@ -43,6 +44,7 @@ const Profile = (props) => {
       setPassword(response.data.password);
       setAboutUser(response.data.aboutUser);
       setCountry(response.data.country);
+      setID(response.data.id);
     }
     getUser();
   }, [props.match.params.idUser]);
@@ -91,7 +93,7 @@ const Profile = (props) => {
 }
           </Tab>
           <Tab eventKey="videos" title="Videos" className="streamtab">
-              <StreamList />
+              <StreamList  idUser = {id}/>
           </Tab>
           <Tab eventKey="donate" title="Donate" >
               Donate

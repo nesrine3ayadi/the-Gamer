@@ -86,6 +86,7 @@ router.post("/", (req, res, next) => {
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(password, salt, (err, hash) => {
           newUser.password = hash;
+          newUser.confirmPassword=hash;
           newUser
             .save()
             .then((newuser) => res.json(newuser))
