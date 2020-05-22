@@ -81,11 +81,9 @@ const useStyles = makeStyles((theme) => ({
         var token = localStorage.getItem("token");
         var decoded = jwt_decode(token);
              
-        (decoded.role ==="admin")?
-         ( props.signIn(decoded.id) &&
-         props.history.push("/dashboard")):
-         ( props.signIn(decoded.id) &&
-           props.history.push("/home"))
+        if(decoded.role ==="admin")
+        props.history.push("/dashboard") 
+        else props.history.push("/home")
 
         // props.displayCurrentUser(res.data.token)
       })

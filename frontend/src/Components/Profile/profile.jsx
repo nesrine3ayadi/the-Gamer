@@ -82,7 +82,7 @@ const Profile = (props) => {
             <img className="channel-profile-img" alt="" src={profileImg} />
           </div>
         </div>
-        <Tabs defaultActiveKey="videos" id="uncontrolled-tab-example">
+        <Tabs defaultActiveKey="Stream" id="uncontrolled-tab-example">
           <Tab eventKey="Stream" title="Stream" className="streamtab">
            { (props.check) ?
             (<ShowStreaming /> ) :

@@ -112,6 +112,7 @@ function EditProfile(props) {
             id="password"
             aria-describedby="my-helper-text"
             value={password}
+            type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
           <FormHelperText id="my-helper-text">

@@ -48,7 +48,7 @@ const Chat = (props) => {
     });
   
   
-  },[ENDPOINT,name]);
+  },[ENDPOINT,name, room]);
   
 
   useEffect(() => {

@@ -36,21 +36,13 @@ class StreamForm extends React.Component {
 
     render() {
         return (
-         <div className="streamForm">
-
-                
+            <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
                 <Field name="title" component={this.renderInput} label="Enter Title" />
                 <Field name="description" component={this.renderInput} label="Enter Description" />
-                <Link to="/profile/5ebc01336e8d73305c2e9832/100">
-                     <button onClick={() =>{ this.props.handleSubmit(this.onSubmit); this.props.displayStream(); }} className="ui button primary">Submit</button>
-                </Link>
-               
-                </div>
-             
-           
-        )
-    }
-}
+                <button className="ui button primary">Submit</button>
+            </form>
+    
+        )}}
 
 const validate = (formValues) => {
     const errors = {};
@@ -64,8 +56,9 @@ const validate = (formValues) => {
     }
     return errors;
 }
+       
 
 export default reduxForm({
     form: 'streamForm',
     validate
-})(connect(null, { displayStream }) (StreamForm));
+})(StreamForm);

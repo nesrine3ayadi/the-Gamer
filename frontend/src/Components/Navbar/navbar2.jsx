@@ -205,7 +205,11 @@ const useStyles = makeStyles((theme) => ({
             color="inherit"
             aria-label="open drawer"
           >
-           <img className="img-fluid logo" width="70" alt="" src={logo} />
+            <a href="/home">
+
+                <img className="img-fluid logo" width="70" alt="" src={logo} />
+            </a>
+         
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             The Gamer

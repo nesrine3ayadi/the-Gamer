@@ -14,12 +14,23 @@
     height: 25px;
     margin: 10px 0px;
 }
+.show h1 {
+    text-align: center;
+    padding: 15px 0px;
+}
+.container.card{
+    height: 410px;
+}
 .streamForm label {
     /* margin-right: 15px; */
     width: 125px;
     font-size: 14px;
 }
-
+button.ui.button.primary {
+    background: #ab3546 !important;
+    width: 300px;
+    margin: auto;
+}
 .streamForm.container button {
     background: #b23737 !important;
     margin: 10px 0px;
