@@ -33,6 +33,8 @@ function Navbar(props) {
 
     }
   }, [username]);
+  var searchNames = ['Sydney', 'Melbourne', 'Brisbane', 
+    'Adelaide', 'Perth', 'Hobart'];
   return (
     <React.Fragment>
 
@@ -42,7 +44,7 @@ function Navbar(props) {
         <img className="img-fluid logo" width="100" alt="" src={logo} />
       </a>
       {/* <!-- Navbar Search --> */}
-      <form className="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 my-2 my-md-0 osahan-navbar-search">
+      <form className="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 msssy-2 my-md-0 osahan-navbar-search">
         <div className="input-group">
           <input
             type="text"
@@ -50,6 +52,14 @@ function Navbar(props) {
             placeholder="Search for..."
             onChange={(e)=> props.handle(e.target.value)}
           />
+        
+<DropdownInput 
+    options={searchNames}
+    defaultValue={this.props.initialValue}
+    menuClassName='dropdown-input'
+    onSelect={this.handleSelectName}
+    placeholder='Search...'
+/>
           <div className="input-group-append">
             <button className="btn btn-light" type="button" id="mysearchbtn">
               <i className="fas fa-search"></i>
