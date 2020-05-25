@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchStreams } from '../../Actions/action';
+import StreamVideoCard from './StreamVideoCard';
 
 class StreamList extends React.Component {
     componentDidMount() {
@@ -27,12 +28,9 @@ class StreamList extends React.Component {
                     <i className="large middle aligned icon video" />
                     <div className="content">
                         <Link to={'/profile/'+ this.props.idUser + "/" + stream.id} className="header">
-                            {stream.title}
+                         <StreamVideoCard />
                         </Link>
-                        <div className="description">
-                            {stream.description}
-                            {/* {this.renderAdmin(stream)} */}
-                        </div>
+                        
                        
                     </div>
                 </div>

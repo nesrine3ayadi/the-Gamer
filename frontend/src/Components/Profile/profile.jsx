@@ -77,21 +77,15 @@ const Profile = (props) => {
   <Navbar />
  
     <div className="row" id="profilePage">
-      <div className="single-channel-page col-md-8" id="content-wrapper" >
+      <div className="" id="content-wrapper" >
         <div className="single-channel-image" style={{height:"300px", overflow:"hidden" }}>
           <img className="img-fluid" alt="" src={coverImg} />
           <div className="channel-profile">
             <img className="channel-profile-img" alt="" src={profileImg} />
           </div>
         </div>
-        <Tabs defaultActiveKey="Stream" id="uncontrolled-tab-example">
-          <Tab eventKey="Stream" title="Stream" className="streamtab">
-           { (props.check) ?
-            (<ShowStreaming /> ) :
-            
-           (<StreamCreate/> )
-}
-          </Tab>
+        <Tabs defaultActiveKey="videos" id="uncontrolled-tab-example">
+    
           <Tab eventKey="videos" title="Videos" className="streamtab">
               <StreamList  idUser = {id}/>
           </Tab>
@@ -101,11 +95,7 @@ const Profile = (props) => {
         </Tabs>
         
       </div>
-      <div className="col-md-4 col-sm-12 col-xs-12 chatRight">
-        <Chat idprofile={props.match.params.idUser} />
-       
-        
-      </div>
+
     </div>
    
     </Fragment>

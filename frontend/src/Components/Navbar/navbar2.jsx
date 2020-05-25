@@ -145,7 +145,7 @@ const useStyles = makeStyles((theme) => ({
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      
+      <MenuItem> <a href="/createStream">Create Stream </a> </MenuItem>
       <MenuItem onClick={handleMenuClose}> <a href={`/editProfile/${idUser}`}> Edit profile</a></MenuItem>
       <Link to={`/profile/${idUser}`}>
                              
