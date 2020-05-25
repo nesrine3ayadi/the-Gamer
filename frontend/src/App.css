@@ -1,24 +1,4 @@
-/*
-Template Name: VIDOE - Video Streaming Website HTML Template
-Author: Askbootstrap
-Author URI: https://themeforest.net/user/askbootstrap
-Version: 1.0
-*/
-/*
-	-- Body 
-	-- Nav
-	-- Sidebar
-	-- Customize Bootstrap
-	-- Category Slider
-	-- Video Card
-	-- Channels Card
-	-- Upload Details
-	-- Watch History
-	-- Single Channel
-    -- Video Page
-    -- My Account
-	-- Footer
-*/
+
 /* Body */
 button.btn.btn-signin:active {
     color: #a81d1d !important;
@@ -28,15 +8,16 @@ html {
     position: relative;
     min-height: 100%;
 }
-a.item{color: white !important;}
+a.item{color: white !important; font-family: "Aclonica", sans-serif !important;}
 body {
       background-image: url('./img/bodybg.png') !important; 
     color: white !important;
     font-size: 13px;
     height: 100%;
     overflow-x: hidden;
+    font-family: "Aclonica", sans-serif !important;
 }
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{ font-family: "Aclonica", sans-serif !important;
 }
 #wrapper {
     display: -webkit-box;
@@ -1560,4 +1541,51 @@ a:hover, h1, h2, h3, h4, h5, h6 {
    }
 }
 
+.drop .row {
+    margin-bottom: 20px;
+}
+a.linkdrop {
+    display: flex;
+    align-items: center;
+    color: black !important;
+    font-size: 20px;
+    font-family: "Aclonica", sans-serif;
+}
 
+.banner_part{
+    z-index: 0;
+  }
+  header.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionStatic.MuiAppBar-colorPrimary.MuiPaper-elevation4 {
+    z-index: 99;
+    position: relative;
+}
+  .makeStyles-search-4 {
+    position: relative;
+  }
+  .drop {
+    position: absolute;
+    z-index: 999999;
+    display: block;
+    width: 100%;
+    background-color: #e4e0e0;
+}
+.makeStyles-search-4 {
+    width: 40% !important;
+}
+.drop img {
+    width: 10%;
+    margin: 10px;
+  }
+  .makeStyles-inputRoot-6{
+      width: 40%
+  }
+  .makeStyles-inputRoot-6 {
+    color: inherit;
+    width: 100%;
+}
+input.MuiInputBase-input.makeStyles-inputInput-7 {
+    width: 100%;
+  }
+input:focus ~ .drop {
+    display: block !important;
+  }

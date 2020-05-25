@@ -8,6 +8,7 @@ import Axios from "axios"
 import {displayUser} from "../../Actions/action"
 import AllStreams from "../LiveStreaming/AllStreams";
 import { useState } from "react";
+import ModalVideo from './ModalVideo'
 //
 function HomePage(props) {
    const [text, setText] = useState("")
@@ -42,9 +43,7 @@ function HomePage(props) {
                   <p>
                    You can join Other gamers from all the world and share with them your stream
                   </p>
-                  <a href="#" className="btn_1">
-                   Start Now
-                  </a>
+                  <ModalVideo />
                 </div>
               </div>
             </div>
