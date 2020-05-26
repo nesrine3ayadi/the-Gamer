@@ -1,18 +1,23 @@
 .form {
     flex-direction: column;
     background: transparent;
-    border: 1px solid #9b383f;
+    border: none;
+    padding: 10px 0;
+    text-align: left;
 }
 .ui.form .field label {
     color: #9a383f;
 }
-
+header {
+    margin-bottom: 20px;
+}
 .field input {
     background: transparent !important;
     border: 1px solid #9a383f !important;
     color: white !important;
     height: 25px;
     margin: 10px 0px;
+    height: 30px;
 }
 .show h1 {
     text-align: center;

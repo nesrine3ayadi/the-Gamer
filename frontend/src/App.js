@@ -20,6 +20,7 @@ import { Switch, Router, Redirect } from "react-router-dom";
 import history from "./History";
 import Dashboard from "./Components/Dashboard/dashboard";
 import CreateStream from "./Components/CreateStream/CreateStream";
+import Footer from "./Components/Footer/footer";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
            <Route exact path="/profile/:idUser/:id"  component={StreamShow} /> 
         </Switch>
       </Router>
+      <Footer />
     </div>
   );
 }
