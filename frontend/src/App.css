@@ -1543,6 +1543,7 @@ a:hover, h1, h2, h3, h4, h5, h6 {
 
 .drop .row {
     margin-bottom: 20px;
+    align-items: center;
 }
 a.linkdrop {
     display: flex;
@@ -1589,3 +1590,20 @@ input.MuiInputBase-input.makeStyles-inputInput-7 {
 input:focus ~ .drop {
     display: block !important;
   }
+  a.livelink {
+    background: red;
+    height: 20px;
+    padding: 10px;
+    line-height: 0;
+    text-transform: uppercase;
+}
+a.livelink {
+    background: red;
+    height: 20px;
+    padding: 10px;
+    line-height: 0;
+    text-transform: uppercase;
+    /* float: right; */
+    position: absolute;
+    right: 10px;
+}
