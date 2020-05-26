@@ -58,6 +58,11 @@ const UserSchema = new Schema({
   role: {
     type: String,
     required:false,
+  },
+  live: {
+    type: Boolean,
+    required:false,
+    default:false
   }
 },
 { collection : 'users' });

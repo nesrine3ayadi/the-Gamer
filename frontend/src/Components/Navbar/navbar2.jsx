@@ -271,7 +271,7 @@ function Navbar2(props) {
                   <div className="row">
                     <img width="100" src={e.imageUser}></img>
                     <a className="linkdrop" href={`/profile/${e._id}`}>
-                      {e.username}
+                      {e.username} ------> {(e.live) && <label>live</label> }
                     </a>
                   </div>
                 ))}

@@ -243,7 +243,38 @@ router.put("/enable/:_id",(req, res, next) => {
     
   
 });
+router.put("/live/:_id",(req, res, next) => {
+  const { _id } = req.params;
 
+
+  // console.log(response)
+
+  User.findOneAndUpdate(
+    { _id },
+    {
+      $set: {
+        live: true
+      },
+    }
+  ).then(user=>res.json(user))
+  .catch(err=> console.log(err))
+});
+router.put("/offLive/:_id",(req, res, next) => {
+  const { _id } = req.params;
+
+
+  // console.log(response)
+
+  User.findOneAndUpdate(
+    { _id },
+    {
+      $set: {
+        live: false
+      },
+    }
+  ).then(user=>res.json(user))
+  .catch(err=> console.log(err))
+});
 
 
 

@@ -4,6 +4,8 @@ import './Stream.scss'
 import{ Link } from "react-router-dom"
 import { displayStream } from '../../Actions/action'
 import { connect } from 'react-redux'
+import jwt_decode from "jwt-decode"
+import Axios from 'axios';
 
 class StreamForm extends React.Component {
 
@@ -31,7 +33,14 @@ class StreamForm extends React.Component {
 
     onSubmit = (formValues) => {
         this.props.onSubmit(formValues);
+  
+      
         
+    }
+    handleLive = ()=>{
+        var token = localStorage.getItem("token");
+        var decoded = jwt_decode(token);
+        Axios.put("http://localhost:5000/live/"+decoded.id).then(res=>console.log(res.data)).catch(err=>console.log(err))
     }
 
     render() {
@@ -39,7 +48,8 @@ class StreamForm extends React.Component {
             <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
                 <Field name="title" component={this.renderInput} label="Enter Title" />
                 <Field name="description" component={this.renderInput} label="Enter Description" />
-                <button className="ui button primary">Add new Stream</button>
+                <button onClick={()=>this.handleLive()} className="ui button primary">Add new Stream</button>
+                
             </form>
     
         )}}
