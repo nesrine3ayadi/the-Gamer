@@ -1,6 +1,8 @@
+import actions from "redux-form/lib/actions";
+
 const initialState ={
 users:[],
-displayStream: false
+isActive: true
 }
 
 export default function (state = initialState, action) {
@@ -8,8 +10,8 @@ export default function (state = initialState, action) {
       case "DISPLAY_USER":
         return { ...state, users: action.payload };
 
-        case "DISPLAY_STREAM":
-          return { ...state, displayStream: !state.displayStream };
+        case "ACTIVATE_BUTTON":
+          return { ...state, users:state.users.map(e => (e._id == action.payload) && {...state.users,activate:!state.activate}  )   };
 
 
       default:return state

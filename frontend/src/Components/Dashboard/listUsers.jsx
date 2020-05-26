@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Axios from "axios"
-import {displayUser} from "../../Actions/action"
+import {displayUser,activeButton} from "../../Actions/action"
 import {connect} from "react-redux"
 import { Button } from '@material-ui/core';
 
@@ -44,9 +44,11 @@ const rows = [
   const classes = useStyles();
   const handleEnable = (id)=>{
     Axios.put(`http://localhost:5000/enable/${id}`)
+
   }
   const handleDisable = (id)=>{
-    Axios.put(`http://localhost:5000/disable/${id}`)
+    Axios.put(`http://localhost:5000/disable/${id}`);
+
   }
 
   return (
@@ -70,8 +72,9 @@ const rows = [
               </TableCell>
               <TableCell align="right">{row.email}</TableCell>
               <TableCell align="right" className="btn-table">
-                <Button onClick = {()=>handleDisable(row._id)} variant="danger" style={{"color":"white","backgroundColor":"red"}}>Disable</Button>
-                <Button onClick={()=>handleEnable(row._id)} variant="contained" className="info">Enable</Button>
+ 
+                <Button onClick={()=>{props.activeButton(row._id); (!row.activate)?handleEnable(row._id):handleDisable(row._id)}} variant="contained" className="info">
+                  {(row.activate)?<label>Enable</label>:<label>Disable</label>}</Button>
               </TableCell>
             
             </TableRow>
@@ -83,5 +86,6 @@ const rows = [
 }
 const mapStatetoProps = state => ({
   users: state.users.users,
+  activate : state.users.isActive
 });
-export default  connect(mapStatetoProps,{displayUser})(ListUsers)
+export default  connect(mapStatetoProps,{displayUser,activeButton})(ListUsers)

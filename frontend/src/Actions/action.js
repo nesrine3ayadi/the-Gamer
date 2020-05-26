@@ -15,7 +15,12 @@ export const displayStream = ()=> {
       
     }
 }
-
+export const activeButton  = (payload)=>{
+    return {
+        type:"ACTIVATE_BUTTON",
+        payload
+    }
+}
 export const displayCurrentUser = (payload)=> {
     return {
         type: "DISPLAY_CURRENT_USER",
