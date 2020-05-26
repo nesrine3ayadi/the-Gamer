@@ -1545,8 +1545,12 @@ a:hover, h1, h2, h3, h4, h5, h6 {
     margin-bottom: 20px;
     align-items: center;
 }
+a.livelink:hover{
+    color: white !important;
+}
 a.linkdrop {
     display: flex;
+    cursor: pointer;
     align-items: center;
     color: black !important;
     font-size: 20px;

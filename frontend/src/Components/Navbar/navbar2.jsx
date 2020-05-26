@@ -273,7 +273,7 @@ function Navbar2(props) {
                     <a className="linkdrop" href={`/profile/${e._id}`}>
                     {e.username} 
                     </a>
-                    <a href="" className="livelink">   {(e.live) && <label>live</label> } </a>
+                    {(e.live) &&  <a href="" className="livelink">   <label>live</label>  </a>}
                   </div>
                 ))}
               </div>
