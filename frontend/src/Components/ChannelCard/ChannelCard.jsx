@@ -66,24 +66,22 @@ export default function ChannelCard(props) {
         <div className="clash-card__unit-name">{props.user.username}</div>
 
         <div className="clash-card__unit-description">
-          The Archer is a female warrior with sharp eyes. She wears a short,
-          light green dress, a hooded cape, a leather belt and an attached small
-          pouch.
+         {props.user.aboutUser}
         </div>
 
         <div className="clash-card__unit-stats clash-card__unit-stats--archer clearfix">
           <div className="one-third">
-            <div className="stat">25</div>
+            <div className="stat">0</div>
             <div className="stat-value">Streaming</div>
           </div>
 
           <div className="one-third">
-            <div className="stat">24</div>
+            <div className="stat">0</div>
             <div className="stat-value">Followers</div>
           </div>
 
           <div className="one-third no-border">
-            <div className="stat">300</div>
+            <div className="stat">0</div>
             <div className="stat-value">Donate</div>
           </div>
         </div>

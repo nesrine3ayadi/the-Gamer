@@ -8,6 +8,7 @@ const multer = require('multer');
 const { uuid } = require('uuidv4');
 
 
+
 const DIR = '../Backend/Public/';
 
 const storage = multer.diskStorage({
@@ -276,7 +277,32 @@ router.put("/offLive/:_id",(req, res, next) => {
   .catch(err=> console.log(err))
 });
 
+// Post a follow
+router.put("/newFollower/:id", (req, res) => {
+  const _id = req.params.id;
+  const  user  = req.body;
+  User.findOneAndUpdate(
+    { _id },
+    { $push: { followers:  user } }
+  )
+    .then((user) => res.send(user))
+    .catch((err) => console.error(err));
+});
 
+// Delete a follow
+router.put("/deleteFollower/:id/:index", (req, res) => {
+  console.log("params:",req.query)
+  const _id = req.params.id;
+  const index = req.params.index;
+  console.log("id:", _id);
+  console.log("index:", index);
+  User.findOneAndUpdate(
+    { _id },
+    { $pull: { followers:{id: req.params.index } } }
+  )
+    .then((user) => res.send(user))
+    .catch((err) => console.error(err));
+});
 
 
 module.exports = router;

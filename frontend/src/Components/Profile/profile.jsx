@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { displayCurrentUser } from "../../Actions/action";
 import "./profile.scss";
 import { Link } from "react-router-dom";
-import { Tabs, Tab} from 'react-bootstrap'
+import { Tabs, Tab, Button} from 'react-bootstrap'
 import {
   FormControl,
   Input,
@@ -20,7 +20,7 @@ import StreamForm from "../LiveStreaming/StreamForm";
 import StreamCreate from "../LiveStreaming/StreamCreate";
 import StreamList from "../LiveStreaming/StreamList";
 import ShowStreaming from "../LiveStreaming/ShowStreaming";
-
+import jwt_decode from 'jwt-decode'
 
 const Profile = (props) => {
   const [profileImg, setProfileImg] = useState("");
@@ -31,6 +31,8 @@ const Profile = (props) => {
   const [aboutUser, setAboutUser] = useState("");
   const [country, setCountry] = useState("");
   const [id, setID] = useState("");
+  const [contentCreater, setContentCreater] = useState("")
+  const [follower, setFollower] = useState("")
   //
   useEffect(() => {
     async function getUser() {
@@ -45,13 +47,24 @@ const Profile = (props) => {
       setAboutUser(response.data.aboutUser);
       setCountry(response.data.country);
       setID(response.data.id);
+      setContentCreater(response.data)  
+
     }
     getUser();
+    var token = localStorage.getItem('token')
+    var decoded = jwt_decode(token)
+    setFollower(decoded)
   }, [props.match.params.idUser]);
 
   const onFileChange = (e) => {
     setProfileImg(e.target.files[0]);
   };
+  const addFollower = (id) => {
+    Axios.put("http://localhost:5000/newFollower/" + id , follower )
+  }
+  const unFollow = (idContentCreater, idFollower) => {
+    Axios.put("http://localhost:5000/deleteFollower/" + idContentCreater + idFollower  )
+  }
 
   const onSubmit = () => {
     const formData = new FormData();
@@ -82,7 +95,20 @@ const Profile = (props) => {
           <img className="img-fluid" alt="" src={coverImg} />
           <div className="channel-profile">
             <img className="channel-profile-img" alt="" src={profileImg} />
+            {username}
+            {console.log("follower.id : "+ follower.id)}
+            {console.log("contentCreater._id : "+ contentCreater._id)}
+            {localStorage.getItem("token") !== null && (
+              <div>
+                   <Button onClick={() => unFollow(contentCreater._id, follower.id)} > Unfollow</Button>
+            <Button onClick={() => addFollower(contentCreater._id)} > Follow</Button>
+         
+            </div>
+            )}
+
+
           </div>
+        
         </div>
         <Tabs defaultActiveKey="videos" id="uncontrolled-tab-example">
     

@@ -63,6 +63,10 @@ const UserSchema = new Schema({
     type: Boolean,
     required:false,
     default:false
+  },
+  followers:{
+    type:Array,
+    default:[]
   }
 },
 { collection : 'users' });
