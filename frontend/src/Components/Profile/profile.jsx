@@ -63,7 +63,7 @@ const Profile = (props) => {
     Axios.put("http://localhost:5000/newFollower/" + id , follower )
   }
   const unFollow = (idContentCreater, idFollower) => {
-    Axios.put("http://localhost:5000/deleteFollower/" + idContentCreater + idFollower  )
+    Axios.put("http://localhost:5000/deleteFollower/" + idContentCreater + "/" +idFollower  )
   }
 
   const onSubmit = () => {
