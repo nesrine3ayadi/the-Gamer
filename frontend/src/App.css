@@ -1614,3 +1614,17 @@ a.livelink {
     position: absolute;
     right: 10px;
 }
+button.btnf {
+    width: 100px;
+    background: white;
+    border: 1px solid red;
+    color: red;
+    box-shadow: -2px -5px 17px -2px rgba(0,0,0,0.75);
+}
+button.btnf:hover {
+   
+    background: red;
+    
+    color: white;
+   
+}

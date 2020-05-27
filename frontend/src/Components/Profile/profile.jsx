@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { displayCurrentUser } from "../../Actions/action";
 import "./profile.scss";
 import { Link } from "react-router-dom";
+import ShowMore from 'react-show-more-list';
 import { Tabs, Tab, Button} from 'react-bootstrap'
 import {
   FormControl,
@@ -33,6 +34,7 @@ const Profile = (props) => {
   const [id, setID] = useState("");
   const [contentCreater, setContentCreater] = useState("")
   const [follower, setFollower] = useState("")
+  const [ isfollow, setIsFollow] = useState("Follow")
   //
   useEffect(() => {
     async function getUser() {
@@ -61,9 +63,11 @@ const Profile = (props) => {
   };
   const addFollower = (id) => {
     Axios.put("http://localhost:5000/newFollower/" + id , follower )
+    setIsFollow("unFollow")
   }
   const unFollow = (idContentCreater, idFollower) => {
     Axios.put("http://localhost:5000/deleteFollower/" + idContentCreater + "/" +idFollower  )
+    setIsFollow("Follow")
   }
 
   const onSubmit = () => {
@@ -84,13 +88,14 @@ const Profile = (props) => {
       console.log(res);
     });
   };
+  var  listItems = contentCreater.followers
 
   return (
     <Fragment>
   <Navbar />
  
     <div className="row" id="profilePage">
-      <div className="" id="content-wrapper" >
+      <div className="col-md-8 col-xs-12 col-sm-12" id="content-wrapper" >
         <div className="single-channel-image" style={{height:"300px", overflow:"hidden" }}>
           <img className="img-fluid" alt="" src={coverImg} />
           <div className="channel-profile">
@@ -99,9 +104,18 @@ const Profile = (props) => {
             {console.log("follower.id : "+ follower.id)}
             {console.log("contentCreater._id : "+ contentCreater._id)}
             {localStorage.getItem("token") !== null && (
-              <div>
-                   <Button onClick={() => unFollow(contentCreater._id, follower.id)} > Unfollow</Button>
-            <Button onClick={() => addFollower(contentCreater._id)} > Follow</Button>
+              <div class="text-right">
+                     <Button className="btnf" onClick={() => { (isfollow === "Follow") ?
+                     ( addFollower(contentCreater._id)):
+                     ( unFollow(contentCreater._id, follower.id))
+            
+                     }}  > 
+                                          
+                    {isfollow}
+                     
+                     </Button>
+                
+           
          
             </div>
             )}
@@ -121,7 +135,37 @@ const Profile = (props) => {
         </Tabs>
         
       </div>
-
+       <div className="col-md-4 col-sm-12 col-xs-12" >
+       <ShowMore
+    items={listItems}
+    by={5}
+  >
+    {({
+      current,
+      onMore,
+    }) => (
+      <React.Fragment>
+        <ul>
+          {current.map(item => (
+            <li
+              key={item.id}
+            >
+              <img src={item.imageUser} width="70" />
+              {item.username}
+            </li>
+          ))}
+        </ul>
+        <button
+          disabled={!onMore}
+          onClick={() => { if (!!onMore) onMore(); }}
+        >
+          more
+        </button>
+      </React.Fragment>
+    )}
+  </ShowMore>
+         
+         </div>             
     </div>
    
     </Fragment>
