@@ -51,19 +51,19 @@ export default function ChannelCard(props) {
 
   return (
     <Link
-      className="joinCard"
+      className="joinCard "
       
       to={`/profile/${props.user._id}`}
     >
-      <div className="clash-card archer">
+      <div className="clash-card archer ">
         <div className="clash-card__image clash-card__image--archer">
           <img src={props.user.imageUser} alt="archer" />
         </div>
         <div className="clash-card__level clash-card__level--archer">
-          Level 5
+          Level 0
         </div>
 
-        <div className="clash-card__unit-name">{props.user.username}</div>
+        <div className="clash-card__unit-name animate__animated animate__fadeInDown">{props.user.username}</div>
 
         <div className="clash-card__unit-description">
          {props.user.aboutUser}

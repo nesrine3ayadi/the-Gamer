@@ -194,32 +194,14 @@ function Navbar2(props) {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
+       
+       <a href="/login">Login</a>
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
+        
+       <a href="/register"> Register</a>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+     
     </Menu>
   );
   const filtredData = props.users.filter((e) =>
@@ -294,9 +276,13 @@ function Navbar2(props) {
               </IconButton>
             </div>
           ) : (
-            <a className="btn_1" href="/login">
-              Sign In
-            </a>
+            <div className="nav_btn">
+              <a href="/login">
+            <p><span className="bg"></span><span className="base"></span><span className="text">Login</span></p></a>
+            <a class="white" href="/register">
+            <p><span className="bg"></span><span className="base"></span><span className="text">Register</span></p></a>
+           </div>
+          
           )}
           <div className={classes.sectionMobile}>
             <IconButton
