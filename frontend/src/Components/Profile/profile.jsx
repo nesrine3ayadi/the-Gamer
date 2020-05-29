@@ -117,7 +117,7 @@ const Profile = (props) => {
                      }}  > 
                                           
                
-                     {console.log(JSON.stringify(listItems))}
+           {console.log(listItems.map(e=>console.log("this is shit ")))}
                      {isfollow}
                     
                      </Button>
