@@ -108,7 +108,7 @@ router.post("/login", (req, res) => {
   const { email, password } = req.body;
   User.findOne({ email }).then((user) => {
     if (!user) res.sendStatus(409);
-    else if (user.activate === false) res.sendStatus(409)
+
     else {
       bcrypt
         .compare(password, user.password)
@@ -125,7 +125,8 @@ router.post("/login", (req, res) => {
               country: user.country,
               createdAt: user.createdAt,
               role: user.role,
-              followers:user.followers
+              followers:user.followers,
+              activate :user.activate 
             };
             jwt.sign(payload, "session", { expiresIn: 3600 }, (err, token) => {
               if (err) res.sendStatus(500);

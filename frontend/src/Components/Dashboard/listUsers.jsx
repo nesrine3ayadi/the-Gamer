@@ -74,7 +74,7 @@ const rows = [
               <TableCell align="right" className="btn-table">
  
                 <Button onClick={()=>{props.activeButton(row._id); (!row.activate)?handleEnable(row._id):handleDisable(row._id)}} variant="contained" className="info">
-                  {(row.activate)?<label>Enable</label>:<label>Disable</label>}</Button>
+                  {(row.activate)?<label>Disable</label>:<label>Enable</label>}</Button>
               </TableCell>
             
             </TableRow>

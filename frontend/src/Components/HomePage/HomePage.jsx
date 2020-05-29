@@ -67,7 +67,7 @@ function HomePage(props) {
           <div className="row justify-content-center">
             {
            filtredData.map((user) => (
-            (user.role !== "admin") && (
+            (user.role !== "admin"  && user.activate !==false) && (
               <div key={user._id} className="col-lg-4 col-sm-12 text-center" style={{ marginBottom: "30px"}}>
                
                 <ChannelCard user={user} />

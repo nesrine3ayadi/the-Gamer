@@ -82,8 +82,18 @@ const useStyles = makeStyles((theme) => ({
         var decoded = jwt_decode(token);
              
         if(decoded.role ==="admin")
-        props.history.push("/dashboard") 
-        else props.history.push("/home")
+        props.history.push("/dashboard")
+        else if (decoded.activate == false )
+        {
+        setMsg("your account is not active ")
+        localStorage.removeItem(decoded)
+        props.history.push("/login")
+        } 
+        else 
+        {
+          props.history.push("/home")
+        }
+      
 
         // props.displayCurrentUser(res.data.token)
       })
