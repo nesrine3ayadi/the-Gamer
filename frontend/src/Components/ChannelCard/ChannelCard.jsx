@@ -17,6 +17,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import "./ChannelCard.scss";
 import { Link } from "react-router-dom";
+import {connect} from "react-redux"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ChannelCard(props) {
+ function ChannelCard(props) {
   const classNamees = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -71,7 +72,7 @@ export default function ChannelCard(props) {
 
         <div className="clash-card__unit-stats clash-card__unit-stats--archer clearfix">
           <div className="one-third">
-            <div className="stat">0</div>
+            <div className="stat">{props.streams.filter(stream =>stream.Id === props.user._id).length}</div>
             <div className="stat-value">Streaming</div>
           </div>
 
@@ -89,3 +90,10 @@ export default function ChannelCard(props) {
     </Link>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    streams: Object.values(state.streams),
+   
+  };
+};
+export default connect(mapStateToProps)(ChannelCard)
