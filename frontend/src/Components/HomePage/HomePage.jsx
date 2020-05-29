@@ -71,7 +71,7 @@ function HomePage(props) {
               <div key={user._id} className="col-lg-4 col-sm-12 text-center" style={{ marginBottom: "30px"}}>
                
                 <ChannelCard user={user} />
-              
+           
                
               </div>  )
             ))}
