@@ -35,7 +35,7 @@ const Profile = (props) => {
   const [id, setID] = useState("");
   const [contentCreater, setContentCreater] = useState("")
   const [follower, setFollower] = useState("")
-  const [ isfollow, setIsFollow] = useState("Follow")
+  const [ isfollow, setIsFollow] = useState("")
   const [listItems,setLisItems] = useState([])
   //
   useEffect(() => {
@@ -59,6 +59,9 @@ const Profile = (props) => {
     var token = localStorage.getItem('token')
     var decoded = jwt_decode(token)
     setFollower(decoded)
+    if(listItems.find(e=>(e.id===follower.id))) 
+    setIsFollow("unFollow") 
+    else setIsFollow("Follow") 
    
 
   }, [props.match.params.idUser,isfollow,listItems]);
@@ -67,6 +70,7 @@ const Profile = (props) => {
     setProfileImg(e.target.files[0]);
   };
   const addFollower = (id) => {
+
     Axios.put("http://localhost:5000/newFollower/" + id , follower )
     setIsFollow("unFollow")
   }
@@ -110,14 +114,13 @@ const Profile = (props) => {
             {console.log("contentCreater._id : "+ contentCreater._id)}
             {localStorage.getItem("token") !== null && (
               <div class="text-right">
-                     <Button className="btnf" onClick={() => { (isfollow === "Follow") ?
+                     <Button className="btnf" onClick={() => { (isfollow==="Follow") ?
                      ( addFollower(contentCreater._id)):
                      ( unFollow(contentCreater._id, follower.id))
             
                      }}  > 
                                           
-               
-           {console.log(listItems.map(e=>console.log("this is shit ")))}
+                                 
                      {isfollow}
                     
                      </Button>
