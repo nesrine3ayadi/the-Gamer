@@ -21,7 +21,7 @@ class AllStreams extends React.Component {
 
     renderList() {
        
-        return this.props.streams.slice(0, 9).map(stream => {
+        return this.props.listStreams().slice(0, 9).map(stream => {
             return (
                
                 <div className="five wide column " key={stream.id}>
