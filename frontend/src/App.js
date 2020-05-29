@@ -20,6 +20,8 @@ import { Switch, Router, Redirect } from "react-router-dom";
 import history from "./History";
 import Dashboard from "./Components/Dashboard/dashboard";
 import CreateStream from "./Components/CreateStream/CreateStream";
+import ProtectedRouter from "./Components/ProtectedRouter/ProtectedRouter"
+import ModalReact from "./Components/ModalRedirectSignIn/ModalReact";
 import Footer from "./Components/Footer/footer";
 
 function App() {
@@ -33,20 +35,22 @@ function App() {
           
           <Route exact path="/dashboard" component={Dashboard}></Route>
           <Route exact path="/home" component={HomePage}></Route>
-          <Route exact path="/profile/:idUser" component={Profile}></Route>
+          <ProtectedRouter exact path="/profile/:idUser" component={Profile}></ProtectedRouter>
           <Route exact path="/join" component={Join}></Route>
           
           <Route exact path="/editProfile/:idUser" component={EditProfile}></Route>
           <Route exact path="/createStream" component={CreateStream}></Route>
          
-         <Route path="/" exact component={HomePage} />
+          <Route path="/" exact component={HomePage} />
           <Route path="/streams/new" exact component={StreamCreate} />
           <Route path="/streams/edit/:id" exact component={StreamEdit} />
           <Route path="/streams/delete/:id" exact component={StreamDelete} />
            <Route exact path="/profile/:idUser/:id"  component={StreamShow} /> 
+           <Route exact path="/signinmodal"  component={ModalReact} />
+           <Route  path="*"  component={()=>"Error 404 not found "} />  
         </Switch>
       </Router>
-      <Footer />
+      {/* <Footer></Footer> */}
     </div>
   );
 }

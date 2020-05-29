@@ -61,6 +61,7 @@ router.post("/", (req, res, next) => {
     banned,
     createdAt,
     role,
+    followers
   } = req.body;
 
   // Test if user exist Already
@@ -81,6 +82,7 @@ router.post("/", (req, res, next) => {
         banned,
         createdAt,
         role,
+        followers
       });
 
       // Code the password using bcrypt module
@@ -122,7 +124,8 @@ router.post("/login", (req, res) => {
               aboutUser: user.aboutUser,
               country: user.country,
               createdAt: user.createdAt,
-              role: user.role
+              role: user.role,
+              followers:user.followers
             };
             jwt.sign(payload, "session", { expiresIn: 3600 }, (err, token) => {
               if (err) res.sendStatus(500);

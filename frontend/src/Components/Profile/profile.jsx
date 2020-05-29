@@ -35,6 +35,7 @@ const Profile = (props) => {
   const [contentCreater, setContentCreater] = useState("")
   const [follower, setFollower] = useState("")
   const [ isfollow, setIsFollow] = useState("Follow")
+  const [listItems,setLisItems] = useState([])
   //
   useEffect(() => {
     async function getUser() {
@@ -56,7 +57,9 @@ const Profile = (props) => {
     var token = localStorage.getItem('token')
     var decoded = jwt_decode(token)
     setFollower(decoded)
-  }, [props.match.params.idUser]);
+    setLisItems(contentCreater.followers) 
+
+  }, [props.match.params.idUser,isfollow,listItems]);
 
   const onFileChange = (e) => {
     setProfileImg(e.target.files[0]);
@@ -88,7 +91,7 @@ const Profile = (props) => {
       console.log(res);
     });
   };
-  var  listItems = contentCreater.followers
+
 
   return (
     <Fragment>
@@ -111,11 +114,13 @@ const Profile = (props) => {
             
                      }}  > 
                                           
-                    {isfollow}
-                     
+               
+                     {console.log(JSON.stringify(listItems))}
+                     {isfollow}
+                    
                      </Button>
                 
-           
+            
          
             </div>
             )}

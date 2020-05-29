@@ -21,6 +21,12 @@ export const activeButton  = (payload)=>{
         payload
     }
 }
+export const contentCreater = (payload)=>{
+    return {
+        type:"CONTENT_CREATOR",
+        payload
+    }
+}
 export const displayCurrentUser = (payload)=> {
     return {
         type: "DISPLAY_CURRENT_USER",
