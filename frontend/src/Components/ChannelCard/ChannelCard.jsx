@@ -76,7 +76,7 @@ export default function ChannelCard(props) {
           </div>
 
           <div className="one-third">
-            <div className="stat">0</div>
+            <div className="stat">{props.user.followers.length}</div>
             <div className="stat-value">Followers</div>
           </div>
 
