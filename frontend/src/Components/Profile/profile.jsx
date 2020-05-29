@@ -50,15 +50,16 @@ const Profile = (props) => {
       setPassword(response.data.password);
       setAboutUser(response.data.aboutUser);
       setCountry(response.data.country);
-      setID(response.data.id);
+      setID(response.data._id);
       setContentCreater(response.data)  
+      setLisItems(response.data.followers) 
 
     }
     getUser();
     var token = localStorage.getItem('token')
     var decoded = jwt_decode(token)
     setFollower(decoded)
-    setLisItems(contentCreater.followers) 
+   
 
   }, [props.match.params.idUser,isfollow,listItems]);
 
