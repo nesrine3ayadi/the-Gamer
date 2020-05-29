@@ -9,6 +9,7 @@ import {displayUser} from "../../Actions/action"
 import AllStreams from "../LiveStreaming/AllStreams";
 import { useState } from "react";
 import ModalVideo from './ModalVideo'
+import Footer from '../Footer/footer'
 //
 function HomePage(props) {
    const [text, setText] = useState("")
@@ -66,10 +67,13 @@ function HomePage(props) {
           <div className="row justify-content-center">
             {
            filtredData.map((user) => (
+            (user.role !== "admin") && (
               <div key={user._id} className="col-lg-4 col-sm-12 text-center" style={{ marginBottom: "30px"}}>
-                <ChannelCard user={user} />
                
-              </div>
+                <ChannelCard user={user} />
+              
+               
+              </div>  )
             ))}
           </div>
         </div>
@@ -78,6 +82,7 @@ function HomePage(props) {
         <AllStreams />
       </section>
       {/* <!-- pricing part end--> */}
+      <Footer/>
     </Fragment>
   );
 }

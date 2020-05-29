@@ -22,6 +22,7 @@ import StreamCreate from "../LiveStreaming/StreamCreate";
 import StreamList from "../LiveStreaming/StreamList";
 import ShowStreaming from "../LiveStreaming/ShowStreaming";
 import jwt_decode from 'jwt-decode'
+import AllStreams from "../LiveStreaming/AllStreams";
 
 const Profile = (props) => {
   const [profileImg, setProfileImg] = useState("");
@@ -132,7 +133,7 @@ const Profile = (props) => {
         <Tabs defaultActiveKey="videos" id="uncontrolled-tab-example">
     
           <Tab eventKey="videos" title="Videos" className="streamtab">
-              <StreamList  idUser = {id}/>
+              <AllStreams  idUser = {id}/>
           </Tab>
           <Tab eventKey="donate" title="Donate" >
               Donate
