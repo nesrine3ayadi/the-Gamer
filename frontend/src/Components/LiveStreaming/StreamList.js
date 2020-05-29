@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchStreams, listStreams } from "../../Actions/action";
+import { fetchStreams } from "../../Actions/action";
 import StreamVideoCard from "./StreamVideoCard";
 
 class StreamList extends React.Component {
@@ -28,8 +28,8 @@ class StreamList extends React.Component {
   }
 
   renderList() {
-    return this.props.streams.map((stream) => (
-      (stream.Id === this.props.idUser) && (
+    return(  this.props.streams.map((stream) => (
+      (stream.Id == this.props.idUser) && (
         <div className="five wide column " key={stream.Id}>
           <i className="large middle aligned icon video" />
           <div className="content">
@@ -44,17 +44,17 @@ class StreamList extends React.Component {
             </Link>
           </div>
         </div>
-      )));
-    ;
-  }
+      )))
+    )
+    }
 
   renderCreate() {
     if (this.props.isSignedIn) {
       return (
         <div style={{ textAlign: "right" }}>
-          {/* <Link to="/streams/new" className="ui button primary">
+          { <Link to="/streams/new" className="ui button primary">
                         Create Stream
-                    </Link> */}
+                    </Link> }
         </div>
       );
     }
@@ -79,6 +79,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchStreams, listStreams })(
+export default connect(mapStateToProps, { fetchStreams })(
   StreamList
 );

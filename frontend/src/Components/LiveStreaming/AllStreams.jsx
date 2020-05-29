@@ -1,23 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { listStreams,fetchStream } from '../../Actions/action';
+import { listStreams,fetchStreams } from '../../Actions/action';
 import StreamVideoCard from './StreamVideoCard'
 class AllStreams extends React.Component {
     componentDidMount() {
-        this.props.listStreams();
+        this.props.fetchStreams();
     }
 
-    renderAdmin(stream) {
-        if (stream.userId === this.props.currentUserId) {
-            return (
-                <div className="right floated content">
-                    {/* <Link to={'/streams/edit/' + stream.id} className="ui button primary">Edit</Link>
-                    <Link to={'/streams/delete/' + stream.id} className="ui button negative">Delete</Link> */}
-                </div>
-            );//
-        }
-    }
+  
 
     renderList() {
        
@@ -26,7 +17,7 @@ class AllStreams extends React.Component {
                
                 <div className="five wide column " key={stream.id}>
                    
-                    {this.renderAdmin(stream)}
+                  
                     {/* <i className="large middle aligned icon video" /> */}
                     <div className="content">
                         <Link to={'/streams/' + stream.id} className="header">
@@ -73,4 +64,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, { listStreams,fetchStream})(AllStreams);
+export default connect(mapStateToProps, { fetchStreams})(AllStreams);
