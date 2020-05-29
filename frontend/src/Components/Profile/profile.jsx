@@ -133,7 +133,7 @@ const Profile = (props) => {
         <Tabs defaultActiveKey="videos" id="uncontrolled-tab-example">
     
           <Tab eventKey="videos" title="Videos" className="streamtab">
-              <AllStreams  idUser = {id}/>
+              <StreamList  idUser = {id}/>
           </Tab>
           <Tab eventKey="donate" title="Donate" >
               Donate

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { listStreams } from '../../Actions/action';
+import { listStreams,fetchStream } from '../../Actions/action';
 import StreamVideoCard from './StreamVideoCard'
 class AllStreams extends React.Component {
     componentDidMount() {
@@ -21,7 +21,7 @@ class AllStreams extends React.Component {
 
     renderList() {
        
-        return this.props.listStreams().slice(0, 9).map(stream => {
+        return this.props.streams.slice(0, 9).map(stream => {
             return (
                
                 <div className="five wide column " key={stream.id}>
@@ -73,4 +73,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, { listStreams })(AllStreams);
+export default connect(mapStateToProps, { listStreams,fetchStream})(AllStreams);
